@@ -1,0 +1,120 @@
+{
+ "districts": [
+  {
+   "name": null,
+   "max_height_ft": {
+    "value": 60,
+    "quote": "maximum commercial building height of 60 feet above average adjacent grade , or 5 stories",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "max_stories": {
+    "value": 5,
+    "quote": "maximum commercial building height of 60 feet above average adjacent grade , or 5 stories",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "min_floor_to_floor_ft": {
+    "value": 10,
+    "quote": "A minimum floor-to-floor ceiling height of 10 feet is required",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "height_rule_text": {
+    "value": "maximum commercial building height of 60 feet above average adjacent grade , or 5 stories. A minimum floor-to-floor ceiling height of 10 feet is required.",
+    "quote": "maximum commercial building height of 60 feet above average adjacent grade , or 5 stories. A minimum floor-to-floor ceiling height of 10 feet is required.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "height_measured_from": {
+    "value": "grade",
+    "quote": "above average adjacent grade",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "height_limits_combine": {
+    "value": null,
+    "quote": null,
+    "source_id": null,
+    "confidence": null
+   },
+   "max_lot_coverage_pct": {
+    "value": 80,
+    "quote": "maximum lot coverage of 80% on the ground floor",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "max_far": {
+    "value": null,
+    "quote": null,
+    "source_id": null,
+    "confidence": null
+   },
+   "min_lot_area_sqft": {
+    "value": 5000,
+    "quote": "Lot area (min.): As existing; 5,000 sf for new subdivision",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "min_lot_width_ft": {
+    "value": 50,
+    "quote": "Lot width (min.): As existing; 50 ft. for new subdivision",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "min_lot_depth_ft": {
+    "value": 100,
+    "quote": "Lot depth (min.): As existing; 100 ft. for new subdivision",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "residential_permitted": {
+    "value": "conditional",
+    "quote": "The residential density permitted within this district is set in accordance with Use conditions in Section-196-G",
+    "source_id": "S1",
+    "confidence": "medium"
+   },
+   "density_rule_text": {
+    "value": "The residential density permitted within this district is set in accordance with Use conditions in Section-196-G",
+    "quote": "The residential density permitted within this district is set in accordance with Use conditions in Section-196-G",
+    "source_id": "S1",
+    "confidence": "medium"
+   },
+   "density_structured": {
+    "type": "none",
+    "site_area_per_unit_sqft": null,
+    "units_per_acre": null,
+    "max_units": null,
+    "rounding": "not_stated",
+    "quote": "The residential density permitted within this district is set in accordance with Use conditions in Section-196-G",
+    "source_id": "S1",
+    "confidence": "medium"
+   },
+   "special_conditions": [
+    {
+     "category": "historic",
+     "text": "Properties within the C-1 District that are also located within an Historic District Overlay are subject to additional or different bulk requirements.",
+     "quote": "Properties within the C-1 District that are also located within an Historic District Overlay (HDO) are subject to additional or different bulk requirements.",
+     "source_id": "S1"
+    }
+   ]
+  }
+ ],
+ "_meta": {
+  "model": "openai/gpt-oss-120b",
+  "usage": {
+   "completion_tokens": 1256,
+   "prompt_tokens": 2832,
+   "total_tokens": 4088,
+   "completion_time": 2.637335645,
+   "completion_tokens_details": {
+    "reasoning_tokens": 311
+   },
+   "prompt_time": 0.148359834,
+   "prompt_tokens_details": null,
+   "queue_time": 0.378042245,
+   "total_time": 2.785695479
+  },
+  "at": "2026-11-23T11:46:31+00:00"
+ }
+}

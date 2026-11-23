@@ -1,0 +1,449 @@
+[
+  {
+    "zone_key": "C-1",
+    "label": "C-1",
+    "kind": "base_district",
+    "sources": [
+      {
+        "type": "ordinance",
+        "url": "https://ecode360.com/15237855",
+        "via": "zoning layer",
+        "save_as": "data/sources/ordinance/ecode_15237855.html",
+        "status": "manual: Cloudflare bot challenge (HTTP 403)"
+      },
+      {
+        "type": "guide",
+        "url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-1-district",
+        "via": "zoning layer",
+        "status": "ok",
+        "local_path": "data/sources/guide/c-1-district.txt",
+        "fetched_via": "https://www.arcgis.com/sharing/rest/content/items/b263878b6dfe4ae29c0238323ecae760/data?f=json"
+      }
+    ]
+  },
+  {
+    "zone_key": "C-2",
+    "label": "C-2",
+    "kind": "base_district",
+    "sources": [
+      {
+        "type": "ordinance",
+        "url": "https://ecode360.com/15237855",
+        "via": "zoning layer",
+        "save_as": "data/sources/ordinance/ecode_15237855.html",
+        "status": "manual: Cloudflare bot challenge (HTTP 403)"
+      },
+      {
+        "type": "guide",
+        "url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-2-district",
+        "via": "zoning layer",
+        "status": "ok",
+        "local_path": "data/sources/guide/c-2-district.txt",
+        "fetched_via": "https://www.arcgis.com/sharing/rest/content/items/049df7dcad9549fe91f82b503becb17c/data?f=json"
+      }
+    ]
+  },
+  {
+    "zone_key": "C-3",
+    "label": "C-3",
+    "kind": "base_district",
+    "sources": [
+      {
+        "type": "ordinance",
+        "url": "https://ecode360.com/15237855",
+        "via": "zoning layer",
+        "save_as": "data/sources/ordinance/ecode_15237855.html",
+        "status": "manual: Cloudflare bot challenge (HTTP 403)"
+      },
+      {
+        "type": "guide",
+        "url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-3-district",
+        "via": "zoning layer",
+        "status": "ok",
+        "local_path": "data/sources/guide/c-3-district.txt",
+        "fetched_via": "https://www.arcgis.com/sharing/rest/content/items/5b363a9e3f914e66932567454360b2f4/data?f=json"
+      }
+    ]
+  },
+  {
+    "zone_key": "C-4",
+    "label": "C-4",
+    "kind": "base_district",
+    "sources": [
+      {
+        "type": "ordinance",
+        "url": "https://ecode360.com/15237855",
+        "via": "zoning layer",
+        "save_as": "data/sources/ordinance/ecode_15237855.html",
+        "status": "manual: Cloudflare bot challenge (HTTP 403)"
+      }
+    ]
+  },
+  {
+    "zone_key": "I-1",
+    "label": "I-1",
+    "kind": "base_district",
+    "sources": [
+      {
+        "type": "ordinance",
+        "url": "https://ecode360.com/15237722",
+        "via": "zoning layer",
+        "save_as": "data/sources/ordinance/ecode_15237722.html",
+        "status": "manual: Cloudflare bot challenge (HTTP 403)"
+      }
+    ]
+  },
+  {
+    "zone_key": "I-1 (W)",
+    "label": "I-1 (W)",
+    "kind": "base_district",
+    "sources": [
+      {
+        "type": "ordinance",
+        "url": "https://ecode360.com/15237722",
+        "via": "zoning layer",
+        "save_as": "data/sources/ordinance/ecode_15237722.html",
+        "status": "manual: Cloudflare bot challenge (HTTP 403)"
+      }
+    ]
+  },
+  {
+    "zone_key": "I-2",
+    "label": "I-2",
+    "kind": "base_district",
+    "sources": [
+      {
+        "type": "ordinance",
+        "url": "https://ecode360.com/15237818",
+        "via": "zoning layer",
+        "save_as": "data/sources/ordinance/ecode_15237818.html",
+        "status": "manual: Cloudflare bot challenge (HTTP 403)"
+      }
+    ]
+  },
+  {
+    "zone_key": "R-1",
+    "label": "R-1",
+    "kind": "base_district",
+    "sources": [
+      {
+        "type": "ordinance",
+        "url": "https://ecode360.com/15237440",
+        "via": "zoning layer",
+        "save_as": "data/sources/ordinance/ecode_15237440.html",
+        "status": "manual: Cloudflare bot challenge (HTTP 403)"
+      },
+      {
+        "type": "guide",
+        "url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-1-district",
+        "via": "zoning layer",
+        "status": "ok",
+        "local_path": "data/sources/guide/r-1-district.txt",
+        "fetched_via": "https://www.arcgis.com/sharing/rest/content/items/1ca990f1083f4c81bb31d0531da8c6d2/data?f=json"
+      }
+    ]
+  },
+  {
+    "zone_key": "R-2",
+    "label": "R-2",
+    "kind": "base_district",
+    "sources": [
+      {
+        "type": "ordinance",
+        "url": "https://ecode360.com/15237601",
+        "via": "zoning layer",
+        "save_as": "data/sources/ordinance/ecode_15237601.html",
+        "status": "manual: Cloudflare bot challenge (HTTP 403)"
+      },
+      {
+        "type": "guide",
+        "url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-2-district",
+        "via": "zoning layer",
+        "status": "ok",
+        "local_path": "data/sources/guide/r-2-district.txt",
+        "fetched_via": "https://www.arcgis.com/sharing/rest/content/items/d75b1fdd8f0a4b218901a27592755a2d/data?f=json"
+      }
+    ]
+  },
+  {
+    "zone_key": "R-3",
+    "label": "R-3",
+    "kind": "base_district",
+    "sources": [
+      {
+        "type": "ordinance",
+        "url": "https://ecode360.com/15237682",
+        "via": "zoning layer",
+        "save_as": "data/sources/ordinance/ecode_15237682.html",
+        "status": "manual: Cloudflare bot challenge (HTTP 403)"
+      },
+      {
+        "type": "guide",
+        "url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-3-district",
+        "via": "zoning layer",
+        "status": "ok",
+        "local_path": "data/sources/guide/r-3-district.txt",
+        "fetched_via": "https://www.arcgis.com/sharing/rest/content/items/cc12e3f25d5b4c7f9b721b7faadf6f38/data?f=json"
+      }
+    ]
+  },
+  {
+    "zone_key": "R-CP",
+    "label": "R-CP",
+    "kind": "base_district",
+    "sources": [
+      {
+        "type": "ordinance",
+        "url": "https://ecode360.com/15237440",
+        "via": "zoning layer",
+        "save_as": "data/sources/ordinance/ecode_15237440.html",
+        "status": "manual: Cloudflare bot challenge (HTTP 403)"
+      },
+      {
+        "type": "guide",
+        "url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-cp-district",
+        "via": "zoning layer",
+        "status": "ok",
+        "local_path": "data/sources/guide/r-cp-district.txt",
+        "fetched_via": "https://www.arcgis.com/sharing/rest/content/items/05528a9340354768b040960d7e200af8/data?f=json"
+      }
+    ]
+  },
+  {
+    "zone_key": "UD",
+    "label": "University",
+    "kind": "base_district",
+    "sources": [
+      {
+        "type": "ordinance",
+        "url": "https://ecode360.com/33634066",
+        "via": "zoning layer",
+        "save_as": "data/sources/ordinance/ecode_33634066.html",
+        "status": "manual: Cloudflare bot challenge (HTTP 403)"
+      }
+    ]
+  },
+  {
+    "zone_key": "W (N)",
+    "label": "W (N)",
+    "kind": "base_district",
+    "sources": [
+      {
+        "type": "ordinance",
+        "url": "https://ecode360.com/15237942",
+        "via": "zoning layer",
+        "save_as": "data/sources/ordinance/ecode_15237942.html",
+        "status": "manual: Cloudflare bot challenge (HTTP 403)"
+      }
+    ]
+  },
+  {
+    "zone_key": "PLAN:Neumann Leathers",
+    "label": "Neumann Leathers",
+    "kind": "redevelopment_plan",
+    "sources": [
+      {
+        "type": "plan",
+        "url": "https://hostedfiles.civilsolutions.biz/HudsonCo/Towns/0905/Redevelopment_Plans/Neumann_Leathers_Redevelopment_Plan_Amended_4.19.2023.pdf",
+        "via": "redevelopment layer",
+        "save_as": "data/sources/plans/Neumann_Leathers_Redevelopment_Plan_Amended_4.19.2023.pdf",
+        "status": "manual: robots.txt disallows all crawlers"
+      }
+    ],
+    "plan_type": "Rehabilitation (Overlay Plan)"
+  },
+  {
+    "zone_key": "PLAN:Post Office",
+    "label": "Post Office",
+    "kind": "redevelopment_plan",
+    "sources": [
+      {
+        "type": "plan",
+        "url": "https://hostedfiles.civilsolutions.biz/HudsonCo/Towns/0905/Redevelopment_Plans/Post_Office_Redev_Plan_Amended_6.19.19.pdf",
+        "via": "redevelopment layer",
+        "save_as": "data/sources/plans/Post_Office_Redev_Plan_Amended_6.19.19.pdf",
+        "status": "manual: robots.txt disallows all crawlers"
+      }
+    ],
+    "plan_type": "Rehabilitation (Overlay Plan)"
+  },
+  {
+    "zone_key": "PLAN:Southwest",
+    "label": "Southwest",
+    "kind": "redevelopment_plan",
+    "sources": [
+      {
+        "type": "plan",
+        "url": "https://hostedfiles.civilsolutions.biz/HudsonCo/Towns/0905/Redevelopment_Plans/Southwest_Hoboken_RDP_Amend_20260708.pdf",
+        "via": "redevelopment layer",
+        "save_as": "data/sources/plans/Southwest_Hoboken_RDP_Amend_20260708.pdf",
+        "status": "manual: robots.txt disallows all crawlers"
+      }
+    ],
+    "plan_type": "Rehabilitation (Overlay Plan)"
+  },
+  {
+    "zone_key": "RPA:DPW",
+    "label": "DPW - RPA",
+    "kind": "redevelopment_plan",
+    "sources": [
+      {
+        "type": "plan",
+        "url": "https://hostedfiles.civilsolutions.biz/HudsonCo/Towns/0905/Redevelopment_Plans/Public_Works_Garage_Redev_Plan_Amended_20210519_CLEAN.pdf",
+        "via": "zoning layer",
+        "save_as": "data/sources/plans/Public_Works_Garage_Redev_Plan_Amended_20210519_CLEAN.pdf",
+        "status": "manual: robots.txt disallows all crawlers"
+      }
+    ],
+    "plan_type": "Redevelopment (Superseding Plan)"
+  },
+  {
+    "zone_key": "RPA:Fabian Arts District",
+    "label": "Fabian Arts District - RPA",
+    "kind": "redevelopment_plan",
+    "sources": [
+      {
+        "type": "plan",
+        "url": "https://hostedfiles.civilsolutions.biz/HudsonCo/Towns/0905/Redevelopment_Plans/Fabian_Arts_District_Redev_Plan_20231220.pdf",
+        "via": "zoning layer",
+        "save_as": "data/sources/plans/Fabian_Arts_District_Redev_Plan_20231220.pdf",
+        "status": "manual: robots.txt disallows all crawlers"
+      }
+    ],
+    "plan_type": "Rehabilitation (Superseding Plan)"
+  },
+  {
+    "zone_key": "RPA:Garage B",
+    "label": "Garage B - RPA",
+    "kind": "redevelopment_plan",
+    "sources": [
+      {
+        "type": "plan",
+        "url": "https://hostedfiles.civilsolutions.biz/HudsonCo/Towns/0905/Redevelopment_Plans/GarageBRedevPlan_20250319_ADOPTEDwExhibits.pdf",
+        "via": "zoning layer",
+        "save_as": "data/sources/plans/GarageBRedevPlan_20250319_ADOPTEDwExhibits.pdf",
+        "status": "manual: robots.txt disallows all crawlers"
+      }
+    ],
+    "plan_type": "Redevelopment (Superseding Plan)"
+  },
+  {
+    "zone_key": "RPA:HHA",
+    "label": "HHA - RPA",
+    "kind": "redevelopment_plan",
+    "sources": [
+      {
+        "type": "plan",
+        "url": "https://hostedfiles.civilsolutions.biz/hudsonco/towns/0905/redevelopment_plans/HHARP_First_Amendment_5-12-25.pdf",
+        "via": "zoning layer",
+        "save_as": "data/sources/plans/HHARP_First_Amendment_5-12-25.pdf",
+        "status": "manual: robots.txt disallows all crawlers"
+      }
+    ],
+    "plan_type": "Redevelopment (Superseding Plan)"
+  },
+  {
+    "zone_key": "RPA:Hoboken Yard",
+    "label": "Hoboken Yard - RPA",
+    "kind": "redevelopment_plan",
+    "sources": [
+      {
+        "type": "plan",
+        "url": "https://hostedfiles.civilsolutions.biz/HudsonCo/Towns/0905/Redevelopment_Plans/Hoboken_Yard_Redev_Plan_Amended_20220504.pdf",
+        "via": "zoning layer",
+        "save_as": "data/sources/plans/Hoboken_Yard_Redev_Plan_Amended_20220504.pdf",
+        "status": "manual: robots.txt disallows all crawlers"
+      }
+    ],
+    "plan_type": "Redevelopment (Superseding Plan)"
+  },
+  {
+    "zone_key": "RPA:North End",
+    "label": "North End - RPA",
+    "kind": "redevelopment_plan",
+    "sources": [
+      {
+        "type": "plan",
+        "url": "https://hostedfiles.civilsolutions.biz/hudsonco/towns/0905/redevelopment_plans/North_End_Redev_Plan_Incorp_Amendments_to_20251117.pdf",
+        "via": "zoning layer",
+        "save_as": "data/sources/plans/North_End_Redev_Plan_Incorp_Amendments_to_20251117.pdf",
+        "status": "manual: robots.txt disallows all crawlers"
+      },
+      {
+        "type": "plan",
+        "url": "https://hostedfiles.civilsolutions.biz/hudsonco/towns/0905/redevelopment_plans/North_End_Redev_Plan_Incorp_Amendments_to_20260304.pdf",
+        "via": "redevelopment layer",
+        "save_as": "data/sources/plans/North_End_Redev_Plan_Incorp_Amendments_to_20260304.pdf",
+        "status": "manual: robots.txt disallows all crawlers"
+      }
+    ],
+    "plan_type": "Rehabilitation (Superseding Plan)"
+  },
+  {
+    "zone_key": "RPA:Northwest",
+    "label": "Northwest - RPA",
+    "kind": "redevelopment_plan",
+    "sources": [
+      {
+        "type": "plan",
+        "url": "https://hostedfiles.civilsolutions.biz/HudsonCo/Towns/0905/Redevelopment_Plans/NWRedevPlan_Amendments_as_of_03-06-2024.pdf",
+        "via": "zoning layer",
+        "save_as": "data/sources/plans/NWRedevPlan_Amendments_as_of_03-06-2024.pdf",
+        "status": "manual: robots.txt disallows all crawlers"
+      },
+      {
+        "type": "plan",
+        "url": "https://hostedfiles.civilsolutions.biz/HudsonCo/Towns/0905/Redevelopment_Plans/NW_Redev_Plan_Amendments_as_of_10-07-2026.pdf",
+        "via": "redevelopment layer",
+        "save_as": "data/sources/plans/NW_Redev_Plan_Amendments_as_of_10-07-2026.pdf",
+        "status": "manual: robots.txt disallows all crawlers"
+      }
+    ],
+    "plan_type": "Redevelopment (Superseding Plan)"
+  },
+  {
+    "zone_key": "RPA:Observer Highway",
+    "label": "Observer Highway - RPA",
+    "kind": "redevelopment_plan",
+    "sources": [
+      {
+        "type": "plan",
+        "url": "https://hostedfiles.civilsolutions.biz/HudsonCo/Towns/0905/Redevelopment_Plans/Observer_Highway_Redev_Plan_Adopted_04-06-1988_w_Amendments.pdf",
+        "via": "zoning layer",
+        "save_as": "data/sources/plans/Observer_Highway_Redev_Plan_Adopted_04-06-1988_w_Amendments.pdf",
+        "status": "manual: robots.txt disallows all crawlers"
+      }
+    ],
+    "plan_type": "Redevelopment (Superseding Plan)"
+  },
+  {
+    "zone_key": "RPA:South Waterfront",
+    "label": "South Waterfront - RPA",
+    "kind": "redevelopment_plan",
+    "sources": [
+      {
+        "type": "plan",
+        "url": "https://hostedfiles.civilsolutions.biz/HudsonCo/Towns/0905/Redevelopment_Plans/South_Waterfront_Redevelopment_Plan_Revised_04-21-04.pdf",
+        "via": "zoning layer",
+        "save_as": "data/sources/plans/South_Waterfront_Redevelopment_Plan_Revised_04-21-04.pdf",
+        "status": "manual: robots.txt disallows all crawlers"
+      }
+    ],
+    "plan_type": "Redevelopment (Superseding Plan)"
+  },
+  {
+    "zone_key": "RPA:Western Edge",
+    "label": "Western Edge - RPA",
+    "kind": "redevelopment_plan",
+    "sources": [
+      {
+        "type": "plan",
+        "url": "https://hostedfiles.civilsolutions.biz/HudsonCo/Towns/0905/Redevelopment_Plans/Western_Edge_Redev_Plan_incorp_Amendments_to_2025-09-03.pdf",
+        "via": "zoning layer",
+        "save_as": "data/sources/plans/Western_Edge_Redev_Plan_incorp_Amendments_to_2025-09-03.pdf",
+        "status": "manual: robots.txt disallows all crawlers"
+      }
+    ],
+    "plan_type": "Redevelopment (Superseding Plan)"
+  }
+]

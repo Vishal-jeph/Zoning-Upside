@@ -42,3 +42,11 @@ PARCEL_FIELDS = [
 ]
 FORBIDDEN_FIELDS = {"M4_Owner_Name", "M4_Owner_Street", "M4_Owner_Csz", "Parcel_OTHER1"}
 assert not FORBIDDEN_FIELDS & set(PARCEL_FIELDS)
+
+# ---- Phase 2: rule sources
+# Zoning Guide (ArcGIS Hub site). Page text is read from the public item-data API,
+# which robots.txt permits; the Hub page itself is a JavaScript shell.
+GUIDE_SITE_ITEM = "c3dbe6962a094345a6465611676053e5"
+ARCGIS_ITEM_DATA = "https://www.arcgis.com/sharing/rest/content/items/{id}/data?f=json"
+
+GROQ_DEFAULT_MODEL = "openai/gpt-oss-120b"  # best free-tier extraction model on Groq (2026-11 list)

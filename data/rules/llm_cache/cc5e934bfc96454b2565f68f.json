@@ -1,0 +1,138 @@
+{
+ "districts": [
+  {
+   "name": null,
+   "max_height_ft": {
+    "value": 40,
+    "quote": "The R-CP district permits a maximum residential building height of 40 feet above average adjacent grade",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "max_stories": {
+    "value": 3.5,
+    "quote": "or 3.5 stories",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "min_lot_area_sqft": {
+    "value": 3000,
+    "quote": "Lot area (min.): 3,000 sf",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "min_lot_width_ft": {
+    "value": 30,
+    "quote": "Lot width (min.): 30 ft.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "min_lot_depth_ft": {
+    "value": 100,
+    "quote": "Lot depth (min.): 100 ft.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "max_lot_coverage_pct": {
+    "value": 50,
+    "quote": "Lot coverage (max.): 50%",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "max_far": {
+    "value": null,
+    "quote": null,
+    "source_id": null,
+    "confidence": null
+   },
+   "min_floor_to_floor_ft": {
+    "value": null,
+    "quote": "Min. floor-to-floor Height: None",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "height_rule_text": {
+    "value": "The R-CP district permits a maximum residential building height of 40 feet above average adjacent grade, or 3.5 stories. The bottom-most story would then be partially above and partially below grade; the portion below grade would not be counted towards the maximum height.",
+    "quote": "The R-CP district permits a maximum residential building height of 40 feet above average adjacent grade , or 3.5 stories.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "density_rule_text": {
+    "value": "The number of residential units (i.e., density) allowed is determined by dividing the site area by 2,000 and rounding to the closest whole number and calculated to the thousandth place.",
+    "quote": "The number of residential units (i.e., density) allowed is determined by dividing the site area by 2,000 and rounding to the closest whole number and calculated to the thousandth place.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "residential_permitted": {
+    "value": "yes",
+    "quote": "The R-CP district permits a maximum residential building height of 40 feet...",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "height_measured_from": {
+    "value": "grade",
+    "quote": "40 feet above average adjacent grade",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "height_limits_combine": {
+    "value": null,
+    "quote": null,
+    "source_id": null,
+    "confidence": null
+   },
+   "density_structured": {
+    "type": "site_area_per_unit",
+    "site_area_per_unit_sqft": 2000,
+    "units_per_acre": null,
+    "max_units": null,
+    "rounding": "nearest",
+    "quote": "Density (max.): Lot area divided by 2,000, rounded to the nearest whole number calculated to the thousandth place",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "special_conditions": [
+    {
+     "category": "step_back",
+     "text": "Rear yard must be at least 30% of lot area or 30\u202fft.",
+     "quote": "A minimum rear setback of 30-foot, or 30% of lot is required.",
+     "source_id": "S1"
+    },
+    {
+     "category": "step_back",
+     "text": "At least one side yard must be 5\u202fft.",
+     "quote": "On at least one side, a minimum 5-foot side yard setback is required.",
+     "source_id": "S1"
+    },
+    {
+     "category": "step_back",
+     "text": "Front yard follows prevailing setbacks, not to exceed 10\u202fft.",
+     "quote": "No front yard setback is required, except where front yard prevailing setbacks apply. In such cases, the front yard prevailing setback can not exceed 10 feet.",
+     "source_id": "S1"
+    },
+    {
+     "category": "historic",
+     "text": "Properties also in a Historic District Overlay may have additional bulk requirements.",
+     "quote": "Properties within the R-CP District that are also located within an Historic District Overlay (HDO) are subject to additional or different bulk requirements.",
+     "source_id": "S1"
+    }
+   ]
+  }
+ ],
+ "_meta": {
+  "model": "openai/gpt-oss-120b",
+  "usage": {
+   "completion_tokens": 1415,
+   "prompt_tokens": 2716,
+   "total_tokens": 4131,
+   "completion_time": 2.9283925379999998,
+   "completion_tokens_details": {
+    "reasoning_tokens": 254
+   },
+   "prompt_time": 0.311888743,
+   "prompt_tokens_details": null,
+   "queue_time": 0.321515965,
+   "total_time": 3.240281281
+  },
+  "at": "2026-11-23T11:51:34+00:00"
+ }
+}

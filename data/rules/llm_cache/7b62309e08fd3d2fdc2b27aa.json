@@ -1,0 +1,132 @@
+{
+ "districts": [
+  {
+   "name": null,
+   "max_height_ft": {
+    "value": 40,
+    "quote": "Building Height: 40 ft. above DFE",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "max_stories": {
+    "value": null,
+    "quote": null,
+    "source_id": null,
+    "confidence": null
+   },
+   "min_lot_area_sqft": {
+    "value": 2000,
+    "quote": "Lot area (min.): 2,000 sf",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "min_lot_width_ft": {
+    "value": 20,
+    "quote": "Lot width (min.): 20 ft.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "min_lot_depth_ft": {
+    "value": 100,
+    "quote": "Lot depth (min.): 100 ft.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "max_lot_coverage_pct": {
+    "value": 60,
+    "quote": "Lot coverage (max.): 60%",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "max_far": {
+    "value": null,
+    "quote": null,
+    "source_id": null,
+    "confidence": null
+   },
+   "min_floor_to_floor_ft": {
+    "value": 10,
+    "quote": "Min. floor-to-floor Height: 10 ft.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "height_rule_text": {
+    "value": "The R-2 District permits a maximum residential building height of 40 feet above Design Flood Elevation (DFE).",
+    "quote": "The R-2 District permits a maximum residential building height of 40 feet above Design Flood Elevation (DFE).",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "height_measured_from": {
+    "value": "design_flood_elevation",
+    "quote": "above Design Flood Elevation (DFE)",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "height_limits_combine": {
+    "value": null,
+    "quote": null,
+    "source_id": null,
+    "confidence": null
+   },
+   "density_rule_text": {
+    "value": "The number of residential units (i.e., density) allowed is determined by dividing the site area by 660 and rounding to the closest whole number.",
+    "quote": "The number of residential units (i.e., density) allowed is determined by dividing the site area by 660 and rounding to the closest whole number.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "density_structured": {
+    "type": "site_area_per_unit",
+    "site_area_per_unit_sqft": 660,
+    "units_per_acre": null,
+    "max_units": null,
+    "rounding": "nearest",
+    "quote": "Density (min.): 660 sf per dwelling unit",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "residential_permitted": {
+    "value": "yes",
+    "quote": "The purpose of this district is: ... to otherwise reinforce the residential characteristics of this district by restricting uses and structures not compatible with district objectives.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "special_conditions": [
+    {
+     "category": "step_back",
+     "text": "Rear yard setback is the lesser of 30\u202fft or 30\u202f% of lot depth.",
+     "quote": "Rear yard: 30 ft. or 30% of lot depth, whichever is less.",
+     "source_id": "S1"
+    },
+    {
+     "category": "step_back",
+     "text": "Front yard may be 0\u202fft or match adjacent side setbacks, but not exceed 10\u202fft.",
+     "quote": "Front yard: 0 ft. or match the setback on the adjoining lots on either side except that no front yard setback shall exceed 10 feet.",
+     "source_id": "S1"
+    },
+    {
+     "category": "step_back",
+     "text": "Side yard setback may be 0\u202fft or 5\u202fft.",
+     "quote": "Side yard: 0 ft. or 5 ft.",
+     "source_id": "S1"
+    }
+   ]
+  }
+ ],
+ "_meta": {
+  "model": "openai/gpt-oss-120b",
+  "usage": {
+   "completion_tokens": 1299,
+   "prompt_tokens": 2599,
+   "total_tokens": 3898,
+   "completion_time": 2.7457379189999997,
+   "completion_tokens_details": {
+    "reasoning_tokens": 267
+   },
+   "prompt_time": 0.167718399,
+   "prompt_tokens_details": null,
+   "queue_time": 0.324931726,
+   "total_time": 2.913456318
+  },
+  "at": "2026-11-23T11:49:32+00:00"
+ }
+}

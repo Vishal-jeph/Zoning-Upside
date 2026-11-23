@@ -36,3 +36,35 @@ and is not downloaded again unless `--refresh` is passed.
   site so the land is counted once.
 - **Zone** comes from the zoning map polygon covering most of the site. The tax record's
   `M4_Zone` is kept and any disagreement is flagged.
+
+## Phase 2: zone rules extraction and human review
+
+```bash
+.venv/bin/python -m pipeline.rules_fetch      # build source list, fetch Zoning Guide pages, write the checklist
+.venv/bin/python -m pipeline.rules_extract    # LLM extraction (Groq) for zones that have sources
+cd web && npm install && npm run dev          # then open http://localhost:3000/rules/review
+```
+
+**Sources.** Each zone draws on up to three documents: the ordinance section (ecode360), the
+redevelopment plan PDF, and the City's Zoning Guide page.
+- The Guide pages are fetched automatically through the public ArcGIS item API.
+- ecode360 sits behind a Cloudflare bot challenge, and the plan-PDF host's robots.txt disallows
+  crawlers, so you save those files yourself. `data/sources/SOURCES.md` lists every URL and the
+  file name to save it under.
+
+**Extraction.** The extractor uses `openai/gpt-oss-120b` on the Groq free tier, which allows
+8k tokens per minute; the code throttles itself to stay under that. The model must return
+`null` for anything the text doesn't state, and a verbatim quote for every value. The code then
+checks that each quote occurs in the source and that each number appears in its quote. Failures
+are flagged on the review page, never silently accepted. Every LLM reply is cached in
+`data/rules/llm_cache/`.
+
+**Review.** `/rules/review` works only under `npm run dev`; its API returns 403 in a production
+build. It shows a zones × fields grid. For each zone you see:
+- every value with its quote and source link
+- values from other sources that disagree
+- a comparison with the seed values from the brief (R-1, C-1)
+
+Approving a zone writes it to `data/rules/hoboken_rules.json` with `approved_by: "manual"` and
+the date. If you change a value, the page records it as `confirmed_on_review` and requires a
+note saying where you confirmed it. Only approved zones are used in calculations.

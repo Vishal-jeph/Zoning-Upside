@@ -1,0 +1,219 @@
+{
+ "districts": [
+  {
+   "name": null,
+   "max_height_ft": {
+    "value": 52,
+    "quote": "maximum principal building height of 52 feet above average adjacent grade is permitted",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "max_stories": {
+    "value": null,
+    "quote": null,
+    "source_id": null,
+    "confidence": null
+   },
+   "min_lot_area_sqft": {
+    "value": 2000,
+    "quote": "Lot area (min.): As existing; 2,000 sf for new subdivision",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "min_lot_width_ft": {
+    "value": 20,
+    "quote": "Lot width (min.): As existing; 20 ft. for new subdivision",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "min_lot_depth_ft": {
+    "value": 100,
+    "quote": "Lot depth (min.): As existing; 100 ft. for new subdivision",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "max_lot_coverage_pct": {
+    "value": 60,
+    "quote": "Maximum lot coverage permitted for principal buildings fronting Washington Street is 60%",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "max_far": {
+    "value": null,
+    "quote": null,
+    "source_id": null,
+    "confidence": null
+   },
+   "min_floor_to_floor_ft": {
+    "value": null,
+    "quote": "For residential floors, a minimum floor-to-floor height of 10 feet is required. For commercial floors, a minimum floor-to-floor height of 12 feet is required.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "height_rule_text": {
+    "value": "maximum principal building height of 52 feet above average adjacent grade is permitted",
+    "quote": "maximum principal building height of 52 feet above average adjacent grade is permitted",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "height_measured_from": {
+    "value": "grade",
+    "quote": "52 ft. above grade",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "height_limits_combine": {
+    "value": null,
+    "quote": null,
+    "source_id": null,
+    "confidence": null
+   },
+   "density_rule_text": {
+    "value": "maximum residential density permitted within this district is calculated by dividing the lot area by 330",
+    "quote": "The maximum residential density permitted within this district is calculated by dividing the lot area by 330.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "density_structured": {
+    "type": "site_area_per_unit",
+    "site_area_per_unit_sqft": 330,
+    "units_per_acre": null,
+    "max_units": null,
+    "rounding": "not_stated",
+    "quote": "The maximum residential density permitted within this district is calculated by dividing the lot area by 330.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "residential_permitted": {
+    "value": "yes",
+    "quote": "Ground-floor commercial with residential above is required for principal buildings.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "special_conditions": [
+    {
+     "category": "other",
+     "text": "Rear yard setback of 40% of the lot is required; no front or side yard setbacks required.",
+     "quote": "A minimum rear setback of 40% of the lot is required, while no side yard setback is required. Additionally, no front yard setback is required, except where front yard prevailing setbacks apply.",
+     "source_id": "S1"
+    }
+   ]
+  },
+  {
+   "name": "Court Street",
+   "max_height_ft": {
+    "value": 52,
+    "quote": "maximum principal building height of 52 feet above average adjacent grade is permitted",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "max_stories": {
+    "value": null,
+    "quote": null,
+    "source_id": null,
+    "confidence": null
+   },
+   "min_lot_area_sqft": {
+    "value": 2000,
+    "quote": "Lot area (min.): As existing; 2,000 sf for new subdivision",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "min_lot_width_ft": {
+    "value": 20,
+    "quote": "Lot width (min.): As existing; 20 ft. for new subdivision",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "min_lot_depth_ft": {
+    "value": 100,
+    "quote": "Lot depth (min.): As existing; 100 ft. for new subdivision",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "max_lot_coverage_pct": {
+    "value": 60,
+    "quote": "Maximum lot coverage for principal buildings fronting Washington Street is 60%",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "max_far": {
+    "value": null,
+    "quote": null,
+    "source_id": null,
+    "confidence": null
+   },
+   "min_floor_to_floor_ft": {
+    "value": null,
+    "quote": "For residential floors, a minimum floor-to-floor height of 10 feet is required. For commercial floors, a minimum floor-to-floor height of 12 feet is required.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "height_rule_text": {
+    "value": "maximum principal building height of 52 feet above average adjacent grade is permitted; accessory building height of 30 feet above grade is permitted",
+    "quote": "The maximum height permitted for maximum principal building height of 52 feet above average adjacent grade is permitted, while an accessory building height of 30 feet above grade is permitted.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "height_measured_from": {
+    "value": "grade",
+    "quote": "52 ft. above grade; Accessory: 30 ft. above grade",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "height_limits_combine": {
+    "value": null,
+    "quote": null,
+    "source_id": null,
+    "confidence": null
+   },
+   "density_rule_text": {
+    "value": "maximum residential density is calculated by dividing the lot area by 330 and adding one unit",
+    "quote": "For property abutting Court Street, the maximum residential density is calculated by dividing the lot area by 330 and adding one (1) unit.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "density_structured": {
+    "type": "formula",
+    "site_area_per_unit_sqft": null,
+    "units_per_acre": null,
+    "max_units": null,
+    "rounding": "not_stated",
+    "quote": "maximum residential density is calculated by dividing the lot area by 330 and adding one unit",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "residential_permitted": {
+    "value": "yes",
+    "quote": "Ground-floor commercial with residential above is required for principal buildings.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "special_conditions": [
+    {
+     "category": "other",
+     "text": "Accessory building fronting Court Street may cover up to 20% of the lot; rear yard setback of 40% required; no front or side yard setbacks.",
+     "quote": "Maximum lot coverage for accessory buildings fronting Court Street is 20%. Rear yard: 40%. Front yard: 0 ft. or prevailing.",
+     "source_id": "S1"
+    }
+   ]
+  }
+ ],
+ "_meta": {
+  "model": "openai/gpt-oss-120b",
+  "usage": {
+   "completion_tokens": 2180,
+   "prompt_tokens": 3116,
+   "total_tokens": 5296,
+   "completion_time": 4.590650108,
+   "completion_tokens_details": {
+    "reasoning_tokens": 337
+   },
+   "prompt_time": 0.145736167,
+   "prompt_tokens_details": null,
+   "queue_time": 0.166872632,
+   "total_time": 4.736386275
+  },
+  "at": "2026-11-23T11:47:33+00:00"
+ }
+}

@@ -1,0 +1,126 @@
+{
+ "districts": [
+  {
+   "name": null,
+   "max_height_ft": {
+    "value": 40,
+    "quote": "maximum residential building height of 40 feet above Design Flood Elevation (DFE)",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "max_stories": {
+    "value": 3,
+    "quote": "or three stories",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "min_floor_to_floor_ft": {
+    "value": 10,
+    "quote": "Min. floor-to-floor Height: 10 ft.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "height_rule_text": {
+    "value": "maximum residential building height of 40 feet above Design Flood Elevation (DFE), or 3 stories. A minimum floor-to-floor ceiling height of 10 feet is required.",
+    "quote": "maximum residential building height of 40 feet above Design Flood Elevation (DFE), or 3 stories. A minimum floor-to-floor ceiling height of 10 feet is required.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "height_measured_from": {
+    "value": "design_flood_elevation",
+    "quote": "40 feet above Design Flood Elevation (DFE)",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "height_limits_combine": {
+    "value": null,
+    "quote": null,
+    "source_id": null,
+    "confidence": null
+   },
+   "max_lot_coverage_pct": {
+    "value": 60,
+    "quote": "Lot coverage (max.): 60%",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "max_far": {
+    "value": null,
+    "quote": null,
+    "source_id": null,
+    "confidence": null
+   },
+   "min_lot_area_sqft": {
+    "value": 2000,
+    "quote": "Lot area (min.): 2,000 sf",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "min_lot_width_ft": {
+    "value": 100,
+    "quote": "Lot width (min.): 100 ft.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "min_lot_depth_ft": {
+    "value": 100,
+    "quote": "Lot depth (min.): 100 ft.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "residential_permitted": {
+    "value": "yes",
+    "quote": "R-1 District permits a maximum residential building height...",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "density_rule_text": {
+    "value": "The number of residential units (i.e., density) permitted is determined by dividing the site area by 660 and rounding to the closest whole number.",
+    "quote": "The number of residential units (i.e., density) permitted is determined by dividing the site area by 660 and rounding to the closest whole number.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "density_structured": {
+    "type": "site_area_per_unit",
+    "site_area_per_unit_sqft": 660,
+    "units_per_acre": null,
+    "max_units": null,
+    "rounding": "nearest",
+    "quote": "The number of residential units ... determined by dividing the site area by 660 and rounding to the closest whole number.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "special_conditions": [
+    {
+     "category": "step_back",
+     "text": "The building must have a 30\u2011foot, or 30% of lot, rear setback at minimum.",
+     "quote": "The building must have a 30-foot, or 30% of lot, rear setback at minimum.",
+     "source_id": "S1"
+    },
+    {
+     "category": "historic",
+     "text": "Properties within the R-1 District that are also located within an Historic District Overlay (HDO) are subject to additional or different bulk requirements.",
+     "quote": "Properties within the R-1 District that are also located within an Historic District Overlay (HDO) are subject to additional or different bulk requirements.",
+     "source_id": "S1"
+    }
+   ]
+  }
+ ],
+ "_meta": {
+  "model": "openai/gpt-oss-120b",
+  "usage": {
+   "completion_tokens": 1370,
+   "prompt_tokens": 2601,
+   "total_tokens": 3971,
+   "completion_time": 2.8711955209999998,
+   "completion_tokens_details": {
+    "reasoning_tokens": 355
+   },
+   "prompt_time": 0.252681186,
+   "prompt_tokens_details": null,
+   "queue_time": 0.16368834,
+   "total_time": 3.123876707
+  },
+  "at": "2026-11-23T11:46:15+00:00"
+ }
+}

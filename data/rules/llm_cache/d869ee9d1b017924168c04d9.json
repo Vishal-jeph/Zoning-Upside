@@ -1,0 +1,128 @@
+{
+ "districts": [
+  {
+   "name": null,
+   "max_height_ft": {
+    "value": 40,
+    "quote": "maximum residential building height of 40 feet above Design Flood Elevation (DFE)",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "max_stories": {
+    "value": null,
+    "quote": null,
+    "source_id": null,
+    "confidence": null
+   },
+   "min_lot_area_sqft": {
+    "value": 2500,
+    "quote": "Lot area (min.): 2,500 sf",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "min_lot_width_ft": {
+    "value": 25,
+    "quote": "Lot width (min.): 25 ft.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "min_lot_depth_ft": {
+    "value": 100,
+    "quote": "Lot depth (min.): 100 ft.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "max_lot_coverage_pct": {
+    "value": 60,
+    "quote": "Lot coverage (max.): 60% (principal building)",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "max_far": {
+    "value": null,
+    "quote": null,
+    "source_id": null,
+    "confidence": null
+   },
+   "min_floor_to_floor_ft": {
+    "value": 10,
+    "quote": "Min. floor-to-floor Height: 10 ft.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "height_rule_text": {
+    "value": "maximum residential building height of 40 feet above Design Flood Elevation (DFE)",
+    "quote": "maximum residential building height of 40 feet above Design Flood Elevation (DFE)",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "height_measured_from": {
+    "value": "design_flood_elevation",
+    "quote": "maximum residential building height of 40 feet above Design Flood Elevation (DFE)",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "height_limits_combine": {
+    "value": null,
+    "quote": null,
+    "source_id": null,
+    "confidence": null
+   },
+   "density_rule_text": {
+    "value": "The number of residential units (i.e., density) allowed is determined by dividing the site area by 660 and rounding to the closest whole number.",
+    "quote": "The number of residential units (i.e., density) allowed is determined by dividing the site area by 660 and rounding to the closest whole number.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "density_structured": {
+    "type": "site_area_per_unit",
+    "site_area_per_unit_sqft": 660,
+    "units_per_acre": null,
+    "max_units": null,
+    "rounding": "nearest",
+    "quote": "The number of residential units (i.e., density) allowed is determined by dividing the site area by 660 and rounding to the closest whole number.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "residential_permitted": {
+    "value": "yes",
+    "quote": "The R-3 District permits a maximum residential building height of 40 feet above Design Flood Elevation (DFE).",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "special_conditions": [
+    {
+     "category": "step_back",
+     "text": "Rear yard setback must be 30 ft. or 30% of lot depth, whichever is less.",
+     "quote": "Rear yard: 30 ft. or 30% of lot depth, whichever is less.",
+     "source_id": "S1"
+    },
+    {
+     "category": "neighbor_height",
+     "text": "Front yard setback must match the setback on adjoining lots on either side, not exceeding 10 ft.",
+     "quote": "Front yard: 0 ft. or match the setback on the adjoining lots on either side except that no front yard setback shall exceed 10 feet.",
+     "source_id": "S1"
+    }
+   ]
+  }
+ ],
+ "_meta": {
+  "model": "openai/gpt-oss-120b",
+  "usage": {
+   "completion_tokens": 1377,
+   "prompt_tokens": 2630,
+   "total_tokens": 4007,
+   "completion_time": 2.9737922230000002,
+   "completion_tokens_details": {
+    "reasoning_tokens": 386
+   },
+   "prompt_time": 0.048955765,
+   "prompt_tokens_details": {
+    "cached_tokens": 2048
+   },
+   "queue_time": 0.165673373,
+   "total_time": 3.022747988
+  },
+  "at": "2026-11-23T11:50:33+00:00"
+ }
+}
