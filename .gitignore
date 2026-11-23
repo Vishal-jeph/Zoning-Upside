@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+.DS_Store
+# Raw downloads and large derived files stay local (re-create with `python -m pipeline`).
+data/raw/
+data/processed/*.parquet
+data/sources/*
+!data/sources/.gitkeep
+node_modules/
+.next/
