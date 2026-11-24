@@ -1,0 +1,144 @@
+{
+ "districts": [
+  {
+   "name": null,
+   "max_height_ft": {
+    "value": 52,
+    "quote": "maximum building height of four (4) residential floors over one (1) grade-level commercial floor that can not exceed 52 feet above grade",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "max_stories": {
+    "value": null,
+    "quote": null,
+    "source_id": null,
+    "confidence": null
+   },
+   "min_lot_area_sqft": {
+    "value": 2000,
+    "quote": "Lot area (min.): As existing; 2,000 sf",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "min_lot_width_ft": {
+    "value": 20,
+    "quote": "Lot width (min.): As existing; 20 ft.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "min_lot_depth_ft": {
+    "value": 100,
+    "quote": "Lot depth (min.): As existing; 100 ft.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "max_lot_coverage_pct": {
+    "value": 60,
+    "quote": "Maximum lot coverage permitted is 60%",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "max_far": {
+    "value": null,
+    "quote": null,
+    "source_id": null,
+    "confidence": null
+   },
+   "min_floor_to_floor_ft": {
+    "value": 10,
+    "quote": "For residential floors, a minimum floor-to-floor height of 10 feet is required",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "max_height_ft_residential": {
+    "value": null,
+    "quote": null,
+    "source_id": null,
+    "confidence": null
+   },
+   "max_stories_residential": {
+    "value": 4,
+    "quote": "four (4) residential floors over one (1) grade-level commercial floor",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "max_height_ft_commercial": {
+    "value": null,
+    "quote": null,
+    "source_id": null,
+    "confidence": null
+   },
+   "max_stories_commercial": {
+    "value": 1,
+    "quote": "one (1) grade-level commercial floor",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "height_rule_text": {
+    "value": "maximum building height of four (4) residential floors over one (1) grade-level commercial floor that can not exceed 52 feet above grade",
+    "quote": "The C-3 Neighborhood Business District permits a maximum building height of four (4) residential floors over one (1) grade-level commercial floor that can not exceed 52 feet above grade.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "height_measured_from": {
+    "value": "grade",
+    "quote": "not exceed 52 feet above grade",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "height_limits_combine": {
+    "value": null,
+    "quote": null,
+    "source_id": null,
+    "confidence": null
+   },
+   "density_rule_text": {
+    "value": "maximum residential density permitted within this district is calculated by dividing the lot area by 500",
+    "quote": "The maximum residential density permitted within this district is calculated by dividing the lot area by 500.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "density_structured": {
+    "type": "site_area_per_unit",
+    "site_area_per_unit_sqft": 500,
+    "units_per_acre": null,
+    "max_units": null,
+    "rounding": "not_stated",
+    "quote": "The maximum residential density permitted within this district is calculated by dividing the lot area by 500.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "residential_permitted": {
+    "value": "yes",
+    "quote": "The purpose of the C-3 Neighborhood Business District is to provide a range of shopping, goods and convenience services that cater largely to residents in the surrounding neighborhood.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "special_conditions": [
+    {
+     "category": "historic",
+     "text": "Properties within the C-3 District that are also located within an Historic District Overlay are subject to additional or different bulk requirements.",
+     "quote": "Properties within the C-3 District that are also located within an Historic District Overlay (HDO) are subject to additional or different bulk requirements.",
+     "source_id": "S1"
+    }
+   ]
+  }
+ ],
+ "_meta": {
+  "model": "openai/gpt-oss-120b",
+  "usage": {
+   "completion_tokens": 1500,
+   "prompt_tokens": 3152,
+   "total_tokens": 4652,
+   "completion_time": 3.172894594,
+   "completion_tokens_details": {
+    "reasoning_tokens": 384
+   },
+   "prompt_time": 0.134172801,
+   "prompt_tokens_details": null,
+   "queue_time": 0.374496385,
+   "total_time": 3.307067395
+  },
+  "at": "2026-11-24T10:07:39+00:00"
+ }
+}

@@ -40,6 +40,8 @@ NONRES_KEYWORDS_RE = re.compile(
 STORIES_MATERIAL_RE = re.compile(r"^(\d+(?:\.\d+)?)(?:\s*[,/]\s*(\d+(?:\.\d+)?))?\s*([A-Z][A-Z&]*)$")
 UNITS_RE = re.compile(r"^(\d+)U$")          # "2U" -> 2 residential units
 COMM_UNITS_RE = re.compile(r"^(\d+)C$")     # "1C" -> 1 commercial unit (store front)
+# Letters after a leading number that are unit counts, not a building material ("15U-1C", "10 UNITS").
+NOT_MATERIAL = {"U", "UNIT", "UNITS", "C", "COM", "BR"}
 
 
 @dataclass
@@ -88,6 +90,7 @@ def parse_bldg_desc(raw: str | None) -> BldgParse:
     if CONDO_UNIT_RE.match(s) or s in ("RETAIL", "COMMERCIAL", "PARKING", "STORAGE"):
         return BldgParse("condo_unit")
     s = re.sub(r"\s+1/2(?=[A-Z])", ".5", s)  # "4 1/2B" = 4.5 stories
+    s = re.sub(r"(?<![\d.])(\d)1/2(?=[A-Z])", r"\1.5", s)  # "21/2CB" = 2 1/2 stories (not 21)
     if NONRES_KEYWORDS_RE.match(s):
         return BldgParse("non_residential", tags=[s])
     if VACANT_RE.match(s):
@@ -106,7 +109,7 @@ def parse_bldg_desc(raw: str | None) -> BldgParse:
         heads = re.split(r"(?<=[A-Z])[,&](?=\d)", segs[0])
         for head in heads:
             m = STORIES_MATERIAL_RE.match(head.strip())
-            if not m:
+            if not m or m.group(3) in NOT_MATERIAL:
                 return BldgParse("unparsed")
             hi = float(m.group(2) or m.group(1))
             lo = float(m.group(1))

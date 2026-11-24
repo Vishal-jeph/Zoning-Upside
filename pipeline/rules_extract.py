@@ -108,6 +108,12 @@ Rules:
 - For a base district return exactly one entry with name = null.
 - Heights: give feet and stories separately; height_rule_text is the rule as written. Use
   height_limits_combine = "whichever_is_less" only if the text says so (or equivalent).
+- Building type: if the text states a height/story limit for one building type only, use the typed fields:
+  max_height_ft_commercial / max_stories_commercial for commercial buildings, and
+  max_height_ft_residential / max_stories_residential for residential or mixed-use buildings (e.g.
+  "residential floors over a commercial floor" is mixed-use). Use max_height_ft / max_stories only for a
+  limit stated for all principal buildings without naming a type. Never copy a limit into another type.
+- min_floor_to_floor_ft: when residential and commercial minimums differ, give the residential one.
 - Use principal-building rules, not accessory structures. Lot coverage as a percent number (60, not 0.6).
 - density_structured: "site_area_per_unit" when units = lot area / N sq ft; "units_per_acre"; "max_units";
   "formula" for anything else; "none" if residential use is not permitted. Otherwise null.
@@ -277,9 +283,24 @@ def merge_districts(results: list[tuple[dict, dict]], texts: dict, src_by_id: di
             ds["verified"] = False
             ds["confidence"] = "low"
             ds["issues"] = [*ds.get("issues", []), f"density type 'none' but residential_permitted = {rp}"]
+        dedupe_building_type(fields)
         out.append({"name": rec["name"], "fields": fields, "conflicts": conflicts,
                     "special_conditions": rec["special_conditions"]})
     return out
+
+
+def dedupe_building_type(fields: dict) -> None:
+    """A general height/story limit that just repeats a building-type limit (same value, same quote) was
+    stated for that type only, so it is not a limit for all buildings: clear it and say why."""
+    for base in ("max_height_ft", "max_stories"):
+        g = fields.get(base) or {}
+        for suffix in ("_commercial", "_residential"):
+            t = fields.get(base + suffix) or {}
+            if g.get("value") is not None and t.get("value") == g.get("value") and t.get("quote") == g.get("quote"):
+                fields[base] = {"value": None, "quote": None, "source_id": None, "confidence": None,
+                                "verified": False, "alternatives": [g],
+                                "issues": [f"moved to {base + suffix}: the quote states it for that building type only"]}
+                break
 
 
 # ------------------------------------------------------------------ main

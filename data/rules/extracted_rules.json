@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-23T11:51:50+00:00",
+ "generated_at": "2026-11-24T10:07:39+00:00",
  "model": "openai/gpt-oss-120b",
  "zones": {
   "R-1": {
@@ -245,19 +245,7 @@
      "fields": {
       "residential_permitted": {
        "value": "conditional",
-       "quote": "The residential density permitted within this district is set in accordance with Use conditions in Section-196-G",
-       "source_id": "S1",
-       "confidence": "medium",
-       "verified": true,
-       "issues": [],
-       "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-1-district",
-       "source_type": "guide",
-       "source_priority": 1,
-       "alternatives": []
-      },
-      "max_height_ft": {
-       "value": 60,
-       "quote": "maximum commercial building height of 60 feet above average adjacent grade , or 5 stories",
+       "quote": "The residential density permitted within this district is set in accordance with Use conditions in Section-196-G.",
        "source_id": "S1",
        "confidence": "high",
        "verified": true,
@@ -267,9 +255,69 @@
        "source_priority": 1,
        "alternatives": []
       },
+      "max_height_ft": {
+       "value": null,
+       "quote": null,
+       "source_id": null,
+       "confidence": null,
+       "verified": false,
+       "alternatives": [
+        {
+         "value": 60,
+         "quote": "maximum commercial building height of 60 feet above average adjacent grade , or 5 stories.",
+         "source_id": "S1",
+         "confidence": "high",
+         "verified": true,
+         "issues": [],
+         "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-1-district",
+         "source_type": "guide",
+         "source_priority": 1,
+         "alternatives": []
+        }
+       ],
+       "issues": [
+        "moved to max_height_ft_commercial: the quote states it for that building type only"
+       ]
+      },
       "max_stories": {
+       "value": null,
+       "quote": null,
+       "source_id": null,
+       "confidence": null,
+       "verified": false,
+       "alternatives": [
+        {
+         "value": 5,
+         "quote": "maximum commercial building height of 60 feet above average adjacent grade , or 5 stories.",
+         "source_id": "S1",
+         "confidence": "high",
+         "verified": true,
+         "issues": [],
+         "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-1-district",
+         "source_type": "guide",
+         "source_priority": 1,
+         "alternatives": []
+        }
+       ],
+       "issues": [
+        "moved to max_stories_commercial: the quote states it for that building type only"
+       ]
+      },
+      "max_height_ft_commercial": {
+       "value": 60,
+       "quote": "maximum commercial building height of 60 feet above average adjacent grade , or 5 stories.",
+       "source_id": "S1",
+       "confidence": "high",
+       "verified": true,
+       "issues": [],
+       "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-1-district",
+       "source_type": "guide",
+       "source_priority": 1,
+       "alternatives": []
+      },
+      "max_stories_commercial": {
        "value": 5,
-       "quote": "maximum commercial building height of 60 feet above average adjacent grade , or 5 stories",
+       "quote": "maximum commercial building height of 60 feet above average adjacent grade , or 5 stories.",
        "source_id": "S1",
        "confidence": "high",
        "verified": true,
@@ -292,8 +340,8 @@
        "alternatives": []
       },
       "height_rule_text": {
-       "value": "maximum commercial building height of 60 feet above average adjacent grade , or 5 stories. A minimum floor-to-floor ceiling height of 10 feet is required.",
-       "quote": "maximum commercial building height of 60 feet above average adjacent grade , or 5 stories. A minimum floor-to-floor ceiling height of 10 feet is required.",
+       "value": "maximum commercial building height of 60 feet above average adjacent grade , or 5 stories.",
+       "quote": "maximum commercial building height of 60 feet above average adjacent grade , or 5 stories.",
        "source_id": "S1",
        "confidence": "high",
        "verified": true,
@@ -341,7 +389,7 @@
       },
       "max_lot_coverage_pct": {
        "value": 80,
-       "quote": "maximum lot coverage of 80% on the ground floor",
+       "quote": "Lot coverage (max.): Ground Floor: 80%; Upper Floors: 60%",
        "source_id": "S1",
        "confidence": "high",
        "verified": true,
@@ -353,7 +401,7 @@
       },
       "min_floor_to_floor_ft": {
        "value": 10,
-       "quote": "A minimum floor-to-floor ceiling height of 10 feet is required",
+       "quote": "Min. floor-to-floor Height: 10 ft.",
        "source_id": "S1",
        "confidence": "high",
        "verified": true,
@@ -364,10 +412,10 @@
        "alternatives": []
       },
       "density_rule_text": {
-       "value": "The residential density permitted within this district is set in accordance with Use conditions in Section-196-G",
-       "quote": "The residential density permitted within this district is set in accordance with Use conditions in Section-196-G",
+       "value": "Density (max.): In accordance with use conditions set forth herein [ Section-196-G ]",
+       "quote": "Density (max.): In accordance with use conditions set forth herein [ Section-196-G ]",
        "source_id": "S1",
-       "confidence": "medium",
+       "confidence": "high",
        "verified": true,
        "issues": [],
        "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-1-district",
@@ -381,7 +429,7 @@
        "units_per_acre": null,
        "max_units": null,
        "rounding": "not_stated",
-       "quote": "The residential density permitted within this district is set in accordance with Use conditions in Section-196-G",
+       "quote": "Density (max.): In accordance with use conditions set forth herein [ Section-196-G ]",
        "source_id": "S1",
        "confidence": "low",
        "value": null,

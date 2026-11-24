@@ -147,3 +147,16 @@ def test_small_helpers():
     assert parse_year("1901") == 1901 and parse_year("") is None and parse_year("0") is None
     assert norm_zone("I-1 (W)") == norm_zone("I-1W") == "I1W"
     assert norm_zone("W (N)") == norm_zone("W-N")
+
+
+# Found by the building-footprint cross-check: these were read as 21 / 31 / 15 / 10 stories.
+def test_half_story_without_space():
+    assert parse_bldg_desc("21/2CB-2U-H").existing_stories == 2.5
+    assert parse_bldg_desc("31/2B-1FX-4U-H").existing_stories == 3.5
+    assert parse_bldg_desc("2,21/2B").existing_stories == 2.5
+
+
+def test_unit_counts_are_not_stories():
+    assert parse_bldg_desc("15U-1C").parse_status == "unparsed"
+    assert parse_bldg_desc("10 UNITS").parse_status == "unparsed"
+    assert parse_bldg_desc("4/5CB-2U-H").existing_stories == 5  # ranges still work

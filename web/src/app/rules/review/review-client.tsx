@@ -24,8 +24,9 @@ function densityLabel(e?: Evidence | ApprovedDistrict["density_structured"] | nu
   return e.type;
 }
 
-type ZoneStatus = "approved" | "extracted" | "needs sources" | "pending";
+type ZoneStatus = "approved" | "needs re-approval" | "extracted" | "needs sources" | "pending";
 function zoneStatus(key: string, data: RulesPayload): ZoneStatus {
+  if (data.approved.zones[key]?.needs_reapproval) return "needs re-approval";
   if (data.approved.zones[key]) return "approved";
   const z = data.extracted?.zones[key];
   if (!z || z.status === "no_sources") return "needs sources";
@@ -34,6 +35,7 @@ function zoneStatus(key: string, data: RulesPayload): ZoneStatus {
 
 const statusStyle: Record<ZoneStatus, string> = {
   approved: "bg-emerald-100 text-emerald-800 border-emerald-200",
+  "needs re-approval": "bg-red-100 text-red-800 border-red-200",
   extracted: "bg-amber-100 text-amber-800 border-amber-200",
   "needs sources": "bg-slate-100 text-slate-600 border-slate-200",
   pending: "bg-slate-100 text-slate-600 border-slate-200",
@@ -169,7 +171,8 @@ function ZoneEditor({ zoneKey, data, onSaved }: { zoneKey: string; data: RulesPa
   const label = ez?.label ?? data.manifest.find((m) => m.zone_key === zoneKey)?.label ?? zoneKey;
 
   const initial = useMemo<ApprovedDistrict[]>(
-    () => az?.districts ?? ez?.districts.map(draftFromExtracted) ?? [],
+    // A zone marked for re-approval starts from the fresh extraction so the new evidence is visible.
+    () => (az && !az.needs_reapproval ? az.districts : ez?.districts.map(draftFromExtracted) ?? az?.districts) ?? [],
     [az, ez],
   );
   const [districts, setDistricts] = useState<ApprovedDistrict[]>(initial);
@@ -223,6 +226,12 @@ function ZoneEditor({ zoneKey, data, onSaved }: { zoneKey: string; data: RulesPa
             {az ? <>Approved {az.approved_at} by {az.approved_by}.</> : "Not approved: shows “rules not verified” in the app."}
             {ez?.plan_type && <> Plan type: {ez.plan_type}.</>}
           </p>
+          {az?.needs_reapproval && (
+            <p className="mt-2 rounded-md border border-red-200 bg-red-50 p-2 text-sm text-red-800">
+              <b>Needs re-approval:</b> {az.reapproval_reason}. The previously approved values stay in use until you
+              approve again. The editor below shows the new extraction.
+            </p>
+          )}
         </div>
         <div className="flex gap-2">
           {az && <Button variant="outline" onClick={() => post({ action: "revoke", zone_key: zoneKey })}>Revoke approval</Button>}

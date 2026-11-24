@@ -41,7 +41,7 @@ web/                 Next.js App Router + TypeScript + Tailwind + shadcn/ui + Ma
 ```bash
 uv venv --python 3.11 .venv && uv pip install --python .venv/bin/python -r pipeline/requirements.txt
 .venv/bin/python -m pipeline              # fetch (uses cache) → clean → potential → web/public/data
-.venv/bin/python -m pytest pipeline/tests # 103 tests: parsers, quote checks, potential and score
+.venv/bin/python -m pytest pipeline/tests # 115 tests: parsers, quote checks, potential, score, footprints
 ```
 
 Zone rules (only needed when rules change):
@@ -127,12 +127,40 @@ How the deployed site is protected (`web/src/middleware.ts`):
   non-condo sites.
 
 **Potential.**
+- **Which limits:**
+  - Rules can state height and story limits per building type (`max_height_ft_residential`,
+    `max_height_ft_commercial`, `max_stories_residential`, `max_stories_commercial`).
+  - Calculations use residential/mixed-use limits first, then limits stated for all buildings,
+    then commercial limits. A commercial fallback is noted in the formula.
 - **Allowed floors:**
-  - Zone states a story limit (R-1, R-CP, C-1, C-3): use it, checked against floor(height ÷ the
-    zone's minimum floor-to-floor).
-  - Zone states only a height (R-2, R-3, C-2): estimate floors at a realistic 11 ft per floor
-    (40 ft → 3). The legal-minimum result (40 ÷ 10 → 4) is shown as the theoretical maximum.
+  - Zone states a story limit (R-1, R-CP, C-1, C-3): the lower of that limit and
+    floor(height ÷ the zone's minimum floor-to-floor).
+  - Zone states only a height (R-2, R-3, C-2):
+    - Realistic = floor(height ÷ max(`TYPICAL_FLOOR_TO_FLOOR_FT`, zone minimum)). The default is
+      11 ft, set in `pipeline/config.py`, so 40 ft → 3.
+    - Theoretical maximum = floor(height ÷ zone minimum), so 40 ft → 4.
+    - The score and table use the realistic number; the drawer shows both.
   - "Already over the limit" is checked against the theoretical maximum.
+- **Footprint cross-check** (`pipeline/overture.py`):
+  - Overture Maps building footprints for the Hoboken bounding box are downloaded once per
+    release (`data/raw/overture/<release>/`, with fields id, geometry, height, num_floors, sources)
+    and overlaid on each lot in EPSG:3424.
+  - **Coverage** = area of the footprint union inside the lot ÷ lot area.
+  - **Height and floors** come from buildings mostly inside the lot. Height is converted from
+    metres to feet; floors are the stated count, or height ÷ 11 ft.
+  - **Building detected — tax record may be outdated** (−40): the tax record says vacant, 0 floors
+    or parking lot, but coverage is at least 30%.
+  - **Floors disagree** (no penalty): tax floors and footprint floors differ by 2 or more.
+  - The cross-check also exposed two parser bugs, now fixed: `21/2CB` (2½ floors) was read as 21,
+    and `15U-1C` was read as 15 floors.
+- **Already being built:** a tax description containing WIP, GUTTED, NEW CONST, UNDER CONST, U/C
+  or DEMO is flagged "possibly under construction" (−40) and hidden by default. Similar-looking
+  tags that are *not* flagged are listed for review in `data/processed/construction_tags.md`.
+- **Condo master lots:**
+  - Land-only master records on a condo lot are grouped into the condo building and never ranked
+    (72 buildings).
+  - Land-only lots that share block + base lot number with condo units (3) are flagged and hidden
+    by default.
 - **Allowed units:** lot area ÷ the zone's sq ft per unit, rounded as the rule says, or rounded
   down when it doesn't say.
 - **Unused:** allowed − existing.
@@ -157,16 +185,21 @@ How the deployed site is protected (`web/src/middleware.ts`):
   | Redevelopment agreement | −25 |
   | Historic district | −10 |
   | Nonconforming | −10 |
-  | Tax-exempt (also hidden by default) | −30 |
-  | Possibly under construction ("WIP" or "GUTTED" in the tax description) | −25 |
+  | Possibly under construction (also hidden by default) | −40 |
+  | Building detected on a lot the tax record calls empty | −40 |
+  | Tax-exempt, class 15A–15F (also hidden by default) | −30 |
   | Irregular lot | −5 |
 
 - Each site lists its reasons, e.g. "Zone allows 20 units; currently 0".
-- Warnings shown as table badges: under construction, tax-exempt, redevelopment agreement,
-  historic, nonconforming, large site (10,000 sq ft or more, where density alone overstates
-  potential), disputed rule.
-- Flood zone and small lot apply to about half of Hoboken. They appear only in the detail panel,
-  as "Good to know".
+- Warnings shown as table badges: under construction, building detected, tax-exempt,
+  redevelopment agreement, historic, nonconforming, large site (20,000 sq ft or more, where density
+  alone overstates potential), disputed or pending rule.
+- Grey table badges (they change the calculation but apply widely):
+  - flood, only where height is measured from the design flood elevation
+  - floors disagree
+- Small lot and flood zones elsewhere appear only in the detail panel.
+- Data dates (tax data, zoning layers, Overture release) are shown on the About page and at the
+  bottom of every detail panel.
 - Disputed rules: where the ordinance text quoted in the brief disagrees with an approved
   Guide value, both are shown. The only case is C-1 height, 60 ft vs 52 ft; allowed floors are
   5 either way.
@@ -180,6 +213,7 @@ How the deployed site is protected (`web/src/middleware.ts`):
 | City of Hoboken ArcGIS services: zoning, redevelopment/rehabilitation areas, zoning in progress, redevelopment agreements, historic districts, advisory flood zones | zone and constraint layers |
 | Hoboken parcel layer (ArcGIS, hosted by Civil Solutions) with NJ MOD-IV tax fields | lots, buildings, values |
 | City of Hoboken Zoning Guide (ArcGIS Hub pages) | zone rules with quotes |
+| Overture Maps buildings (CDLA Permissive 2.0 / ODbL), release recorded in `rules.json` | footprint cross-check |
 | OpenFreeMap / OpenStreetMap contributors (ODbL) | basemap |
 
 These are public services. Requests are rate-limited to 1 per second and cached, robots.txt is
@@ -198,13 +232,20 @@ stored, displayed or exported:
 
 - These are estimates from public zoning text. Variances, site plan review, parking, setbacks,
   flood-elevation rules and historic review can all change the outcome.
-- Tax building descriptions can be outdated, and year built is often a default (1901).
+- Tax building descriptions can be outdated, and year built is often a default (1901). The
+  footprint cross-check catches some outdated records. Footprint data has its own gaps, though: a
+  few lots have no height, and new buildings may be missing.
+- Floor counts where a zone has no story limit are estimates at 11 ft per floor. The theoretical
+  maximum at the zone's minimum floor height is also shown.
 - Only 7 zones are loaded. Industrial, university and waterfront districts and redevelopment
   plan areas are shown but not scored.
 - Sub-districts (C-2 Court Street) can't be located on the map, so affected sites are flagged.
 - C-1 has no numeric density rule in the Guide, so its allowed units stay empty.
-- C-1 height is disputed: 60 ft in the Guide vs 52 ft in the ordinance text quoted in the brief.
-  The ordinance (ecode360) blocks automated access, so it has not been confirmed.
+- C-1 height: the Guide's 60 ft / 5 stories is stated for **commercial** buildings and has no
+  residential/mixed-use limit. The ordinance text quoted in the brief says 52 ft / 5 stories.
+  - C-1 is marked *needs re-approval* until the residential limit is confirmed on the review page.
+  - The ordinance (ecode360) blocks automated access.
+  - Allowed floors are 5 either way.
 - Existing lot coverage is not in the data.
 
 ## Roadmap

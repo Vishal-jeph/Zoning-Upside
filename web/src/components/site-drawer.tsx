@@ -12,6 +12,7 @@ const PART_LABEL: Record<string, string> = {
   land_value_share: "Land-driven value", old_building: "Older building", vacant_land: "Vacant land",
   historic: "Historic district", redev_agreement: "Redevelopment agreement", nonconforming: "Nonconforming",
   irregular_lot: "Irregular lot", exempt: "Tax-exempt", under_construction: "Possibly under construction",
+  building_detected: "Building detected",
 };
 
 export default function SiteDrawer({ site, rules, onClose }: {
@@ -62,9 +63,22 @@ export default function SiteDrawer({ site, rules, onClose }: {
                 <Row label="Units" a={fmtNum(site.existing_units)} b={fmtNum(site.allowed_units)} c={fmtNum(site.unused_units)} />
                 <Row label="Lot coverage" a="not in data"
                      b={maxCov != null ? `${maxCov}%${site.lot_area ? ` ≈ ${fmtNum(site.lot_area * maxCov / 100)} sq ft` : ""}` : "—"} c="" />
-                <Row label="Max height" a="—" b={f.max_height_ft?.value != null ? `${f.max_height_ft.value} ft` : "—"} c="" />
+                <Row label="Max height" a={site.overture_max_height_ft != null ? `≈${fmtNum(site.overture_max_height_ft)} ft*` : "—"}
+                     b={limitText(f, "max_height_ft", " ft")} c="" />
+                <Row label="Max stories" a="" b={limitText(f, "max_stories", "")} c="" />
               </tbody>
             </table>
+            {site.allowed_stories != null && (
+              <p className="mt-2 text-xs text-slate-700">
+                <b>Allowed floors: {fmtNum(site.allowed_stories, 1)}</b>
+                {site.realistic_floor_to_floor_ft != null && site.allowed_stories_max != null
+                  ? <> (realistic, {fmtNum(site.realistic_floor_to_floor_ft)} ft floors) — up to {fmtNum(site.allowed_stories_max, 1)} at
+                      the {fmtNum(site.min_floor_to_floor_ft)} ft minimum.</>
+                  : <> (the zone&apos;s story limit).</>}
+                {site.limits_basis && <span className="text-slate-500"> Limits used: {site.limits_basis}.</span>}
+              </p>
+            )}
+            {site.overture_max_height_ft != null && <p className="mt-1 text-[11px] text-slate-500">* Existing height from building footprint data (see Cross-check).</p>}
             {site.nonconforming && <p className="mt-2 text-xs text-red-700">The existing building already exceeds a zone limit, so this is not counted as an expansion opportunity.</p>}
           </Section>
         )}
@@ -154,6 +168,19 @@ export default function SiteDrawer({ site, rules, onClose }: {
           </dl>
         </Section>
 
+        {site.footprint_coverage_pct != null && (
+          <Section title="Cross-check">
+            <dl className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs">
+              <Fact k="Tax record says" v={site.existing_stories === 0 || site.is_vacant_land ? `vacant (“${site.bldg_desc ?? ""}”)`
+                : site.existing_stories != null ? `${fmtNum(site.existing_stories, 1)} floors (“${site.bldg_desc ?? ""}”)` : `unknown (“${site.bldg_desc ?? "—"}”)`} />
+              <Fact k="Building footprint data says" v={site.overture_floors_est != null
+                ? `≈${fmtNum(site.overture_floors_est)} floors (${site.overture_floors_basis})` : site.footprint_coverage_pct > 0 ? "building, height unknown" : "no building"} />
+              <Fact k="Footprint coverage of lot" v={`${fmtNum(site.footprint_coverage_pct)}%`} />
+              <Fact k="Source" v={`Overture Maps, release ${rules.data_dates?.overture_release ?? "—"}`} />
+            </dl>
+          </Section>
+        )}
+
         <Section title="Sources">
           <ul className="space-y-1 text-xs">
             <Link url={site.guide_url} label="City of Hoboken Zoning Guide page" />
@@ -161,10 +188,25 @@ export default function SiteDrawer({ site, rules, onClose }: {
             <Link url={site.redev_area_url} label="Redevelopment / rehabilitation plan" />
             <Link url={site.redev_agreement_url} label="Redevelopment agreement" />
           </ul>
+          <p className="mt-2 text-[11px] text-slate-500">{dataDatesLine(rules)}</p>
         </Section>
       </div>
     </aside>
   );
+}
+
+// "52 ft (residential/mixed-use) · 60 ft (commercial)": every building-type limit the zone states.
+function limitText(f: Record<string, { value: string | number | null }>, base: string, unit: string) {
+  const parts = [["_residential", "residential/mixed-use"], ["", "all buildings"], ["_commercial", "commercial"]]
+    .filter(([s]) => f[base + s]?.value != null && f[base + s]?.value !== "")
+    .map(([s, l]) => `${f[base + s].value}${unit} (${l})`);
+  return parts.length ? parts.join(" · ") : "—";
+}
+
+export function dataDatesLine(rules: RulesFile) {
+  const d = rules.data_dates ?? {};
+  return `Tax data downloaded ${d.tax_data ?? "—"} · Zoning layers downloaded ${d.zoning_layers ?? "—"} · ` +
+    `Building footprints: Overture release ${d.overture_release ?? "—"}`;
 }
 
 function BlockLot({ site }: { site: SiteProps }) {

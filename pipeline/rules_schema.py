@@ -4,7 +4,11 @@ from __future__ import annotations
 NUMERIC_FIELDS = [
     "max_height_ft", "max_stories", "min_lot_area_sqft", "min_lot_width_ft", "min_lot_depth_ft",
     "max_lot_coverage_pct", "max_far", "min_floor_to_floor_ft",
+    # Limits stated for one building type only. max_height_ft / max_stories hold limits that apply to all
+    # principal buildings. Calculations use residential/mixed-use limits first (pipeline/potential.py).
+    "max_height_ft_residential", "max_stories_residential", "max_height_ft_commercial", "max_stories_commercial",
 ]
+BUILDING_TYPE_FIELDS = NUMERIC_FIELDS[-4:]
 TEXT_FIELDS = ["height_rule_text", "density_rule_text"]
 ENUM_FIELDS = {
     "residential_permitted": ["yes", "no", "conditional"],
@@ -12,8 +16,8 @@ ENUM_FIELDS = {
     # How a story limit and a feet limit combine ("40 feet or three stories, whichever is less").
     "height_limits_combine": ["whichever_is_less", "both_apply", "not_stated"],
 }
-ALL_FIELDS = ["residential_permitted", *NUMERIC_FIELDS[:2], "height_measured_from", "height_limits_combine",
-              "height_rule_text", *NUMERIC_FIELDS[2:], "density_rule_text"]
+ALL_FIELDS = ["residential_permitted", *NUMERIC_FIELDS[:2], *BUILDING_TYPE_FIELDS, "height_measured_from",
+              "height_limits_combine", "height_rule_text", *NUMERIC_FIELDS[2:8], "density_rule_text"]
 DENSITY_TYPES = ["site_area_per_unit", "units_per_acre", "max_units", "formula", "none"]
 CONDITION_CATEGORIES = ["neighbor_height", "step_back", "flood", "historic", "use", "bonus", "other"]
 

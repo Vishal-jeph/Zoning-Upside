@@ -86,7 +86,10 @@ export default function Explorer() {
             <Toggle label="Historic districts" checked={filters.hideHistoric} onChange={(v) => set("hideHistoric", v)} />
             <Toggle label="Redevelopment areas & agreements" checked={filters.hideRedev} onChange={(v) => set("hideRedev", v)} />
             <Toggle label="Nonconforming buildings" checked={filters.hideNonconforming} onChange={(v) => set("hideNonconforming", v)} />
-            <Toggle label="Tax-exempt (public, religious, nonprofit)" checked={filters.hideExempt} onChange={(v) => set("hideExempt", v)} />
+            <Toggle label="Exempt properties (gov., religious, nonprofit)" checked={filters.hideExempt} onChange={(v) => set("hideExempt", v)} />
+            <Toggle label="Possibly under construction" checked={filters.hideUnderConstruction} onChange={(v) => set("hideUnderConstruction", v)} />
+            <Toggle label="Possible condo master lots" checked={filters.hideCondoMaster} onChange={(v) => set("hideCondoMaster", v)} />
+            <Toggle label="Flood zones (A/V)" checked={filters.hideFlood} onChange={(v) => set("hideFlood", v)} />
           </Group>
           <Group title="Include">
             <Toggle label="Condo buildings" checked={filters.includeCondos} onChange={(v) => set("includeCondos", v)} />

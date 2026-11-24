@@ -18,11 +18,11 @@ Generated 2026-11-24 from `data/raw/2026-11-23`.
 ## Parse success (non-condo sites)
 | Building description | sites | share |
 |---|---|---|
-| ok | 2300 | 81.1% |
-| non_residential | 370 | 13.1% |
-| unparsed | 165 | 5.8% |
+| ok | 2296 | 81.0% |
+| non_residential | 368 | 13.0% |
+| unparsed | 171 | 6.0% |
 
-Sites with both stories and units parsed: **2421** of 2835.
+Sites with both stories and units parsed: **2417** of 2835.
 
 | Lot description | sites | share |
 |---|---|---|
@@ -30,10 +30,10 @@ Sites with both stories and units parsed: **2421** of 2835.
 | unparsed | 37 | 1.3% |
 
 Material codes seen (only F = Frame and B = Brick are confirmed; others are kept raw):
-`B` 2161, `F` 176, `S` 49, `CB` 35, `B&S` 29, `MIXED` 22, `B&F` 7, `CBL` 4, `SB` 4, `U` 2, `FR` 1, `BF` 1, `ST&CB` 1, `B&C` 1, `CB&B` 1, `CB&S` 1, `CI` 1, `ST` 1, `BLDGS` 1
+`B` 2162, `F` 176, `S` 49, `CB` 35, `B&S` 29, `MIXED` 17, `B&F` 7, `CBL` 4, `SB` 4, `FR` 1, `BF` 1, `ST&CB` 1, `B&C` 1, `CB&B` 1, `CB&S` 1, `CI` 1, `ST` 1, `BLDGS` 1
 
 Building tags seen (only G = Garage, GUTTED, WIP have confirmed meanings):
-`H` 1702, `BA` 1472, `X` 415, `G` 223, `B` 88, `LAND` 58, `C` 54, `DECK` 48, `BX` 35, `FX` 27, `DK` 23, `MAIN STEM CL 1` 21, `VACANT LAND` 14, `PARKING LOT` 13, `PAVED LOT` 11, `1FX` 11, `2BX` 11, `COM` 10, `1BX` 10, `(LE)` 10, `WIP` 9, `I` 9, `CHURCH` 9, `2X` 9, `1B` 8
+`H` 1701, `BA` 1471, `X` 415, `G` 221, `B` 88, `LAND` 58, `C` 53, `DECK` 48, `BX` 35, `FX` 27, `DK` 23, `MAIN STEM CL 1` 21, `VACANT LAND` 14, `PARKING LOT` 13, `PAVED LOT` 11, `1FX` 11, `2BX` 11, `COM` 10, `1BX` 10, `(LE)` 10, `WIP` 9, `I` 9, `CHURCH` 9, `2X` 9, `1B` 8
 
 ## 30 most common unparsed building descriptions (non-condo records)
 | value | records |
@@ -50,7 +50,6 @@ Building tags seen (only G = Garage, GUTTED, WIP have confirmed meanings):
 | `WIP 6S-10COM` | 2 |
 | `5B&5B 16U&4C-BA` | 2 |
 | `21/2STY.BR` | 2 |
-| `2,21/2B` | 2 |
 | `LAND/RIVER` | 2 |
 | `ROAD` | 2 |
 | `WALKWAY` | 2 |
@@ -58,16 +57,17 @@ Building tags seen (only G = Garage, GUTTED, WIP have confirmed meanings):
 | `T-MOBILE ANTENN` | 1 |
 | `STRIP-CLASS 3` | 1 |
 | `PIER 1-CLASS 3` | 1 |
+| `15U-1C` | 1 |
 | `4B CITY HALL` | 1 |
 | `5B+5B-OFF.BLDGS` | 1 |
 | `PARKINGLOT 15PS` | 1 |
 | `JACKSON ST PARK` | 1 |
 | `MULTI CENTER` | 1 |
+| `3B-4U-2C/2C-G` | 1 |
 | `REC CENTER` | 1 |
 | `PARKING 6PS-DR` | 1 |
 | `PARKING 8PS-DR` | 1 |
 | `5B-4U-1C/3B1U-G` | 1 |
-| `2B 1C H` | 1 |
 
 ## Most common unparsed lot descriptions (non-condo records)
 | value | records |

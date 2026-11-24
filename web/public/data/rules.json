@@ -4,7 +4,9 @@
  "assumptions": {
   "default_floor_to_floor_ft": 10.0,
   "typical_floor_to_floor_ft": 11.0,
-  "large_site_sqft": 10000,
+  "large_site_sqft": 20000,
+  "building_detected_coverage_pct": 30,
+  "floors_disagree_min": 2,
   "default_rounding": "down",
   "binding_limit": "When both a story limit and a height limit are stated, the lower one is used.",
   "subdistricts": "Sites use the zone's main district; sub-districts are flagged, not assigned."
@@ -21,7 +23,8 @@
   "nonconforming": -10,
   "irregular_lot": -5,
   "exempt": -30,
-  "under_construction": -25
+  "under_construction": -40,
+  "building_detected": -40
  },
  "score_caps": {
   "unused_units": 10,
@@ -31,8 +34,15 @@
  },
  "source_conflicts": {
   "C-1": [
-   "Sources disagree on max height: the Zoning Guide says 60, the ordinance text in the project brief says 52 (\u201cfive stories, not to exceed 52 feet above average grade\u201d). Using the approved value; allowed floors are 5 either way. Confirm with the ordinance."
+   "Sources disagree on max height: the approved rules say 60 (all buildings), the ordinance text in the project brief says 52 (\u201cfive stories, not to exceed 52 feet above average grade\u201d). Using the approved value; allowed floors are 5 either way. Confirm with the ordinance."
   ]
+ },
+ "data_dates": {
+  "tax_data": "2026-11-23",
+  "zoning_layers": "2026-11-23",
+  "zoning_guide": "2026-11-23",
+  "overture_release": "2026-11-18.0",
+  "overture_downloaded": "2026-11-24"
  },
  "zones": {
   "C-1": {
@@ -172,7 +182,9 @@
       }
      ]
     }
-   ]
+   ],
+   "needs_reapproval": true,
+   "reapproval_reason": "height limits by building type: the Zoning Guide's 60 ft / 5 stories is stated for commercial buildings; the Guide gives no residential/mixed-use limit, while the ordinance text quoted in the project brief says 'five stories, not to exceed 52 feet above average grade'"
   },
   "C-2": {
    "zone_key": "C-2",

@@ -50,3 +50,15 @@ GUIDE_SITE_ITEM = "c3dbe6962a094345a6465611676053e5"
 ARCGIS_ITEM_DATA = "https://www.arcgis.com/sharing/rest/content/items/{id}/data?f=json"
 
 GROQ_DEFAULT_MODEL = "openai/gpt-oss-120b"  # best free-tier extraction model on Groq (2026-11 list)
+
+# ---------------------------------------------------------------- potential & cross-check settings
+# Realistic floor-to-floor height for new construction (ft). Zones with only a height limit get
+# realistic floors = floor(height ÷ max(this, zone minimum)); the zone minimum gives the theoretical max.
+TYPICAL_FLOOR_TO_FLOOR_FT = 11.0
+# Lots at least this big get the "density alone overstates potential" flag (no score change).
+LARGE_SITE_SQFT = 20000
+# Tax record says vacant / 0 floors / parking lot, but building footprints cover at least this share
+# of the lot → "Building detected — tax record may be outdated".
+BUILDING_DETECTED_COVERAGE_PCT = 30
+# Tax floors and footprint-data floors differing by at least this many → "Floors disagree".
+FLOORS_DISAGREE_MIN = 2

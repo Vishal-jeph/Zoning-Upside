@@ -138,7 +138,9 @@
             }
           ]
         }
-      ]
+      ],
+      "needs_reapproval": true,
+      "reapproval_reason": "height limits by building type: the Zoning Guide's 60 ft / 5 stories is stated for commercial buildings; the Guide gives no residential/mixed-use limit, while the ordinance text quoted in the project brief says 'five stories, not to exceed 52 feet above average grade'"
     },
     "C-2": {
       "zone_key": "C-2",

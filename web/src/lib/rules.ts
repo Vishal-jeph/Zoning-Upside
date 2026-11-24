@@ -87,6 +87,8 @@ export interface ApprovedZone {
   approved_by: "manual";
   approved_at: string; // YYYY-MM-DD
   reviewer_notes: string;
+  needs_reapproval?: boolean; // set by the pipeline when new evidence changes this zone; cleared on approve
+  reapproval_reason?: string;
   districts: ApprovedDistrict[];
 }
 
@@ -101,6 +103,11 @@ export const FIELDS: { key: string; label: string; kind: FieldKind; unit?: strin
   { key: "residential_permitted", label: "Residential permitted", kind: "enum", options: ["yes", "no", "conditional"] },
   { key: "max_height_ft", label: "Max height", kind: "number", unit: "ft" },
   { key: "max_stories", label: "Max stories", kind: "number" },
+  // Limits stated for one building type only; calculations use residential/mixed-use first.
+  { key: "max_height_ft_residential", label: "Max height (residential / mixed-use)", kind: "number", unit: "ft" },
+  { key: "max_stories_residential", label: "Max stories (residential / mixed-use)", kind: "number" },
+  { key: "max_height_ft_commercial", label: "Max height (commercial)", kind: "number", unit: "ft" },
+  { key: "max_stories_commercial", label: "Max stories (commercial)", kind: "number" },
   { key: "height_measured_from", label: "Height measured from", kind: "enum", options: ["grade", "design_flood_elevation", "other"] },
   { key: "height_limits_combine", label: "Height limits combine", kind: "enum", options: ["whichever_is_less", "both_apply", "not_stated"] },
   { key: "height_rule_text", label: "Height rule (as written)", kind: "text" },

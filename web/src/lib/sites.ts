@@ -3,8 +3,9 @@ import type { ApprovedZone } from "@/lib/rules";
 
 export type SiteStatus = "scored" | "condo_building" | "rules_not_loaded";
 
-// "info" = context that applies to most of Hoboken (flood, small lots): shown in the detail panel only.
-export interface Flag { code: string; text: string; level: "warning" | "info" }
+// warning = may change the decision (coloured table badge); note = changes the calculation but applies
+// widely (grey table badge); info = context only (detail panel).
+export interface Flag { code: string; text: string; level: "warning" | "note" | "info" }
 
 export interface SiteProps {
   site_id: string;
@@ -49,6 +50,19 @@ export interface SiteProps {
   lot_area: number | null;
   allowed_stories: number | null;
   allowed_stories_max: number | null;
+  realistic_floor_to_floor_ft: number | null; // set only when the zone gives a height but no story limit
+  min_floor_to_floor_ft: number | null;
+  limits_basis: string | null;                 // which building-type limits were used
+  // building footprint cross-check (Overture Maps)
+  footprint_coverage_pct: number | null;
+  overture_max_height_ft: number | null;
+  overture_num_floors: number | null;
+  overture_floors_est: number | null;
+  overture_floors_basis: string | null;
+  under_construction: boolean;
+  building_detected: boolean;
+  possible_condo_master: boolean;
+  condo_master_lot: boolean;
   stories_formula: string | null;
   stories_note: string | null;
   allowed_units: number | null;
@@ -78,6 +92,7 @@ export interface RulesFile {
   score_weights: Record<string, number>;
   score_caps: Record<string, number>;
   source_conflicts: Record<string, string[]>;
+  data_dates: { tax_data?: string; zoning_layers?: string; zoning_guide?: string; overture_release?: string; overture_downloaded?: string };
   zones: Record<string, ApprovedZone>;
 }
 
@@ -104,6 +119,9 @@ export interface Filters {
   hideRedev: boolean;
   hideNonconforming: boolean;
   hideExempt: boolean;
+  hideUnderConstruction: boolean;
+  hideCondoMaster: boolean;
+  hideFlood: boolean;
   includeCondos: boolean;
   includeUnscored: boolean;
   scoreMin: number;
@@ -113,9 +131,13 @@ export interface Filters {
 
 export const DEFAULT_FILTERS: Filters = {
   zones: [], classes: [], minUnusedUnits: 0, minUnusedStories: 0, minLotArea: 0, maxImprLandRatio: null,
-  hideHistoric: false, hideRedev: false, hideNonconforming: false, hideExempt: true, includeCondos: false, includeUnscored: false,
+  hideHistoric: false, hideRedev: false, hideNonconforming: false, hideExempt: true,
+  hideUnderConstruction: true, hideCondoMaster: true, hideFlood: false, includeCondos: false, includeUnscored: false,
   scoreMin: 0, scoreMax: 100, search: "",
 };
+
+// Property class 15A–15F, or the pipeline's exempt flag.
+export const isExempt = (p: SiteProps) => classGroup(p.prop_class) === "15" || p.flags.some((f) => f.code === "exempt");
 
 export const imprLandRatio = (p: SiteProps) =>
   p.land_value && p.land_value > 0 && p.impr_value != null ? p.impr_value / p.land_value : null;
@@ -133,7 +155,10 @@ export function matches(p: SiteProps, f: Filters): boolean {
   if (f.hideHistoric && p.in_historic_district) return false;
   if (f.hideRedev && (p.in_redev_area || p.has_redev_agreement)) return false;
   if (f.hideNonconforming && p.nonconforming) return false;
-  if (f.hideExempt && classGroup(p.prop_class) === "15") return false;
+  if (f.hideExempt && isExempt(p)) return false;
+  if (f.hideUnderConstruction && p.under_construction) return false;
+  if (f.hideCondoMaster && p.possible_condo_master) return false;
+  if (f.hideFlood && p.in_flood_hazard_area) return false;
   // Numeric filters only constrain scored sites (others have no potential numbers).
   if (p.status === "scored") {
     if (f.minUnusedUnits > 0 && (p.unused_units ?? 0) < f.minUnusedUnits) return false;
@@ -170,6 +195,7 @@ export function toCsv(rows: SiteProps[], disclaimer: string): string {
     ["unused_units", (p) => p.unused_units], ["lot_area_sqft", (p) => p.lot_area],
     ["land_value", (p) => p.land_value], ["improvement_value", (p) => p.impr_value],
     ["year_built", (p) => p.year_built], ["warnings", (p) => p.flags.filter((f) => f.level === "warning").map((f) => f.code).join(" ")],
+    ["footprint_coverage_pct", (p) => p.footprint_coverage_pct], ["footprint_floors_est", (p) => p.overture_floors_est],
     ["score_reasons", (p) => (p.score_reasons ?? []).join("; ")],
     ["units_formula", (p) => p.units_formula], ["stories_formula", (p) => p.stories_formula],
   ];

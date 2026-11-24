@@ -1,0 +1,144 @@
+{
+ "districts": [
+  {
+   "name": null,
+   "max_height_ft": {
+    "value": 60,
+    "quote": "maximum commercial building height of 60 feet above average adjacent grade , or 5 stories.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "max_stories": {
+    "value": 5,
+    "quote": "maximum commercial building height of 60 feet above average adjacent grade , or 5 stories.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "min_lot_area_sqft": {
+    "value": 5000,
+    "quote": "Lot area (min.): As existing; 5,000 sf for new subdivision",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "min_lot_width_ft": {
+    "value": 50,
+    "quote": "Lot width (min.): As existing; 50 ft. for new subdivision",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "min_lot_depth_ft": {
+    "value": 100,
+    "quote": "Lot depth (min.): As existing; 100 ft. for new subdivision",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "max_lot_coverage_pct": {
+    "value": 80,
+    "quote": "Lot coverage (max.): Ground Floor: 80%; Upper Floors: 60%",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "max_far": {
+    "value": null,
+    "quote": null,
+    "source_id": null,
+    "confidence": null
+   },
+   "min_floor_to_floor_ft": {
+    "value": 10,
+    "quote": "Min. floor-to-floor Height: 10 ft.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "max_height_ft_residential": {
+    "value": null,
+    "quote": null,
+    "source_id": null,
+    "confidence": null
+   },
+   "max_stories_residential": {
+    "value": null,
+    "quote": null,
+    "source_id": null,
+    "confidence": null
+   },
+   "max_height_ft_commercial": {
+    "value": 60,
+    "quote": "maximum commercial building height of 60 feet above average adjacent grade , or 5 stories.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "max_stories_commercial": {
+    "value": 5,
+    "quote": "maximum commercial building height of 60 feet above average adjacent grade , or 5 stories.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "height_rule_text": {
+    "value": "maximum commercial building height of 60 feet above average adjacent grade , or 5 stories.",
+    "quote": "maximum commercial building height of 60 feet above average adjacent grade , or 5 stories.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "density_rule_text": {
+    "value": "Density (max.): In accordance with use conditions set forth herein [ Section-196-G ]",
+    "quote": "Density (max.): In accordance with use conditions set forth herein [ Section-196-G ]",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "residential_permitted": {
+    "value": "conditional",
+    "quote": "The residential density permitted within this district is set in accordance with Use conditions in Section-196-G.",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "height_measured_from": {
+    "value": "grade",
+    "quote": "above average adjacent grade",
+    "source_id": "S1",
+    "confidence": "high"
+   },
+   "height_limits_combine": {
+    "value": null,
+    "quote": null,
+    "source_id": null,
+    "confidence": null
+   },
+   "density_structured": {
+    "type": "none",
+    "site_area_per_unit_sqft": null,
+    "units_per_acre": null,
+    "max_units": null,
+    "rounding": "not_stated",
+    "quote": "Density (max.): In accordance with use conditions set forth herein [ Section-196-G ]",
+    "source_id": "S1",
+    "confidence": "medium"
+   },
+   "special_conditions": [
+    {
+     "category": "historic",
+     "text": "Properties within the C-1 District that are also located within an Historic District Overlay are subject to additional or different bulk requirements.",
+     "quote": "Properties within the C-1 District that are also located within an Historic District Overlay (HDO) are subject to additional or different bulk requirements.",
+     "source_id": "S1"
+    }
+   ]
+  }
+ ],
+ "_meta": {
+  "model": "openai/gpt-oss-120b",
+  "usage": {
+   "completion_tokens": 1436,
+   "prompt_tokens": 3373,
+   "total_tokens": 4809,
+   "completion_time": 3.002403791,
+   "completion_tokens_details": {
+    "reasoning_tokens": 334
+   },
+   "prompt_time": 0.159036462,
+   "prompt_tokens_details": null,
+   "queue_time": 0.37943313,
+   "total_time": 3.161440253
+  },
+  "at": "2026-11-24T10:05:38+00:00"
+ }
+}
