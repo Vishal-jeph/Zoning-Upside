@@ -12,6 +12,8 @@ groq>=0.9
 python-dotenv>=1.0
 pytest>=8
 
+tabulate>=0.9
+
 # notebook walkthrough
 matplotlib>=3.8
 ipykernel>=6.29

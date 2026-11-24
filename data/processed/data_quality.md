@@ -1,6 +1,6 @@
 # Data quality report
 
-Generated 2026-11-23 from `data/raw/2026-11-23`.
+Generated 2026-11-24 from `data/raw/2026-11-23`.
 
 ## Records → sites
 | | count |

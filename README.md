@@ -68,3 +68,41 @@ build. It shows a zones × fields grid. For each zone you see:
 Approving a zone writes it to `data/rules/hoboken_rules.json` with `approved_by: "manual"` and
 the date. If you change a value, the page records it as `confirmed_on_review` and requires a
 note saying where you confirmed it. Only approved zones are used in calculations.
+
+**Demo scope.** The demo uses the 7 zones approved from the Zoning Guide (R-1, R-2, R-3, R-CP,
+C-1, C-2, C-3). They cover 2,559 of the 2,835 non-condo sites (90%). Sites in other zones stay
+in the data as `rules_not_loaded` and are not scored.
+
+## Phase 3: potential and scoring
+
+```bash
+.venv/bin/python -m pipeline.potential   # or: python -m pipeline  (runs phases 1 + 3)
+```
+
+For each non-condo site in an approved zone:
+
+- **Allowed stories.** The lower of the story limit and `floor(max height ÷ floor-to-floor)`.
+  Floor-to-floor is the zone's stated minimum, or 10 ft when the zone states none. A building
+  must meet every stated limit, so the lower one binds.
+- **Allowed units.** Lot area ÷ sq ft per unit, rounded as the rule says. When the rule doesn't
+  say how to round, the result is rounded down. Zones without a numeric density rule (C-1) and
+  formula rules (C-2 Court Street) stay empty, with a note explaining why.
+- **Unused space and nonconforming sites.** Unused = allowed − existing, never below 0. If the
+  existing building is already over a limit, the site is flagged nonconforming and is not
+  treated as an opportunity.
+- **Flags.** Each flag comes with a plain-English sentence. The flags cover: historic district,
+  flood zone, redevelopment area, redevelopment agreement, zoning in progress, irregular lot,
+  lot below the minimum size, tax-exempt, area mismatch, zone split or mismatch, sub-district,
+  and nonconforming.
+- **Score (0–100).** Weights live in `SCORE_WEIGHTS` in `pipeline/potential.py`:
+  - unused units 35, unused stories 20, lot area 10
+  - land-driven value 15, old building 5, vacant land 10
+  - penalties: historic −10, redevelopment agreement −25, nonconforming −10, irregular lot −5,
+    tax-exempt −10
+
+  Each scored site comes with reasons, such as "Zone allows 4 units; currently 2".
+
+Outputs:
+- `web/public/data/sites.geojson`: simplified shapes and safe fields only.
+- `web/public/data/rules.json`: the approved rules, assumptions and weights.
+- `data/processed/potential_report.md`: coverage, flags, and the top 25 sites.
