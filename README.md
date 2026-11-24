@@ -106,3 +106,32 @@ Outputs:
 - `web/public/data/sites.geojson`: simplified shapes and safe fields only.
 - `web/public/data/rules.json`: the approved rules, assumptions and weights.
 - `data/processed/potential_report.md`: coverage, flags, and the top 25 sites.
+
+## Phase 4: web app
+
+```bash
+cd web && npm install && npm run dev     # http://localhost:3000
+```
+
+- **Map (`/`)**:
+  - The map colours each property by upside score. Condo buildings and zones without loaded
+    rules show in grey and purple.
+  - Layers you can toggle: zoning, historic, flood (A/V) and redevelopment areas.
+  - Filters: zone, property class, minimum unused units and floors, minimum lot size, maximum
+    building ÷ land value, score range, address or block/lot search. You can exclude historic,
+    redevelopment and nonconforming sites, and include condo buildings and unscored zones.
+  - The site count updates live as you filter. The table sorts by any column, and the filtered
+    rows export to CSV with the disclaimer on the first line.
+  - Clicking a property, on the map or in the table, opens a detail panel. It shows:
+    - existing vs. allowed floors, units and coverage
+    - the exact formulas
+    - why the property got its score, with points for each part
+    - warning flags in plain English
+    - every rule used, with its quote and source link
+    - tax-record facts
+    - the block/lot, with a copy button for Deal Finder
+- **Zone rules (`/zones`)**: the approved rules, with each value's quote, source and approval date.
+- **About (`/about`)**: method, data sources, privacy, coverage, limitations, roadmap.
+
+All the data is static, in `web/public/data/`, and `python -m pipeline.potential` writes it. The
+basemap is OpenFreeMap, which is free and needs no key.

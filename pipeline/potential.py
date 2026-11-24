@@ -95,18 +95,18 @@ def allowed_units(density: dict | None, lot_area: float | None) -> dict:
         return {"value": None, "formula": None, "note": "Lot area unknown."}
     t = density["type"]
     rnd = density.get("rounding")
-    rnd_txt = rnd if rnd in ("nearest", "down", "up") else f"{DEFAULT_ROUNDING} (rounding not stated)"
+    rnd_txt = rnd if rnd in ("nearest", "down", "up") else f"{DEFAULT_ROUNDING}, as the rule does not say how to round"
     if t == "site_area_per_unit" and density.get("site_area_per_unit_sqft"):
         per = float(density["site_area_per_unit_sqft"])
         v = _round(lot_area / per, rnd)
         return {"value": v, "formula": f"{lot_area:,.0f} sq ft ÷ {per:,.0f} sq ft per unit = {lot_area / per:.2f} → "
-                                       f"{v} (rounded {rnd_txt})", "note": None}
+                                       f"{v} rounded {rnd_txt}", "note": None}
     if t == "units_per_acre" and density.get("units_per_acre"):
         upa = float(density["units_per_acre"])
         raw = lot_area / 43560 * upa
         v = _round(raw, rnd)
         return {"value": v, "formula": f"{lot_area:,.0f} sq ft ÷ 43,560 × {upa:g} units/acre = {raw:.2f} → {v} "
-                                       f"(rounded {rnd_txt})", "note": None}
+                                       f"rounded {rnd_txt}", "note": None}
     if t == "max_units" and density.get("max_units"):
         v = int(density["max_units"])
         return {"value": v, "formula": f"{v} units (stated maximum)", "note": None}
@@ -316,7 +316,9 @@ def write_web(sites: gpd.GeoDataFrame, pot: pd.DataFrame, approved_file: dict) -
 
 def _round_geom(gi: dict) -> dict:
     def r(c):
-        return [round(c[0], 6), round(c[1], 6)] if isinstance(c[0], (int, float)) else [r(x) for x in c]
+        if isinstance(c[0], (int, float)):
+            return [round(c[0], 6), round(c[1], 6)]
+        return [r(x) for x in c]
     return {"type": gi["type"], "coordinates": r(gi["coordinates"])}
 
 
@@ -345,6 +347,30 @@ def write_report(sites: gpd.GeoDataFrame, pot: pd.DataFrame) -> str:
     return "\n".join(lines) + "\n"
 
 
+# Map overlay layers for the web app: (layer key, {source column: output name}, dissolve-by column or None)
+OVERLAYS = [
+    ("zoning", {"Zone_": "zone", "CommZone": "name"}, None),
+    ("rehab_redev", {"Rehab_Area": "name", "RehabRedev": "kind"}, None),
+    ("historic", {"Historic_D": "code"}, "Historic_D"),
+    ("flood", {"ZONE": "zone", "ABFE_1Pct": "abfe_ft"}, None),
+]
+
+
+def write_overlays() -> None:
+    from .clean import load_layer
+    for key, cols, dissolve in OVERLAYS:
+        g = load_layer(key)[[*cols, "geometry"]]
+        if dissolve:
+            g = g.dissolve(by=dissolve, as_index=False)
+        g["geometry"] = g.geometry.simplify(1.0, preserve_topology=True)
+        g = g.rename(columns=cols).to_crs(config.CRS_WGS84)
+        feats = [{"type": "Feature", "properties": {k: _clean_json(v) for k, v in rec.items()},
+                  "geometry": _round_geom(geom.__geo_interface__)}
+                 for rec, geom in zip(g.drop(columns="geometry").to_dict("records"), g.geometry)]
+        (WEB_DATA / f"layer_{key}.geojson").write_text(
+            json.dumps({"type": "FeatureCollection", "features": feats}, separators=(",", ":")))
+
+
 def main() -> None:
     sites = gpd.read_parquet(config.PROCESSED / "sites.parquet")
     approved_file = json.loads((config.RULES / "hoboken_rules.json").read_text())
@@ -354,6 +380,7 @@ def main() -> None:
     pot.drop(columns=["flags", "score_reasons", "score_parts"]).to_parquet(config.PROCESSED / "potential.parquet")
     (config.PROCESSED / "potential_report.md").write_text(write_report(sites, pot))
     write_web(sites, pot, approved_file)
+    write_overlays()
     print(pot.status.value_counts().to_string())
     print("Wrote data/processed/potential_report.md, web/public/data/sites.geojson, web/public/data/rules.json")
 

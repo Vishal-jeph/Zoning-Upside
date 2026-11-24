@@ -39,7 +39,7 @@ def test_units_nearest_rounding():
 def test_units_rounding_not_stated_rounds_down():
     d = {"type": "site_area_per_unit", "site_area_per_unit_sqft": 330, "rounding": "not_stated"}
     r = allowed_units(d, 2500)                      # 7.58 → 7
-    assert r["value"] == 7 and "rounding not stated" in r["formula"]
+    assert r["value"] == 7 and "does not say how to round" in r["formula"]
 
 
 def test_units_none_density_stays_missing():
