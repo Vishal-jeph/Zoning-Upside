@@ -3,6 +3,8 @@
  "disclaimer": "Estimate based on public zoning text; verify with the Hoboken Zoning Office.",
  "assumptions": {
   "default_floor_to_floor_ft": 10.0,
+  "typical_floor_to_floor_ft": 11.0,
+  "large_site_sqft": 10000,
   "default_rounding": "down",
   "binding_limit": "When both a story limit and a height limit are stated, the lower one is used.",
   "subdistricts": "Sites use the zone's main district; sub-districts are flagged, not assigned."
@@ -18,13 +20,19 @@
   "redev_agreement": -25,
   "nonconforming": -10,
   "irregular_lot": -5,
-  "exempt": -10
+  "exempt": -30,
+  "under_construction": -25
  },
  "score_caps": {
   "unused_units": 10,
   "unused_stories": 3,
   "lot_area_sqft": 5000,
   "old_building_before": 1940
+ },
+ "source_conflicts": {
+  "C-1": [
+   "Sources disagree on max height: the Zoning Guide says 60, the ordinance text in the project brief says 52 (\u201cfive stories, not to exceed 52 feet above average grade\u201d). Using the approved value; allowed floors are 5 either way. Confirm with the ordinance."
+  ]
  },
  "zones": {
   "C-1": {

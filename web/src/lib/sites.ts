@@ -3,7 +3,8 @@ import type { ApprovedZone } from "@/lib/rules";
 
 export type SiteStatus = "scored" | "condo_building" | "rules_not_loaded";
 
-export interface Flag { code: string; text: string }
+// "info" = context that applies to most of Hoboken (flood, small lots): shown in the detail panel only.
+export interface Flag { code: string; text: string; level: "warning" | "info" }
 
 export interface SiteProps {
   site_id: string;
@@ -47,6 +48,7 @@ export interface SiteProps {
   existing_units_basis: string | null;
   lot_area: number | null;
   allowed_stories: number | null;
+  allowed_stories_max: number | null;
   stories_formula: string | null;
   stories_note: string | null;
   allowed_units: number | null;
@@ -75,6 +77,7 @@ export interface RulesFile {
   assumptions: Record<string, string | number>;
   score_weights: Record<string, number>;
   score_caps: Record<string, number>;
+  source_conflicts: Record<string, string[]>;
   zones: Record<string, ApprovedZone>;
 }
 
@@ -100,6 +103,7 @@ export interface Filters {
   hideHistoric: boolean;
   hideRedev: boolean;
   hideNonconforming: boolean;
+  hideExempt: boolean;
   includeCondos: boolean;
   includeUnscored: boolean;
   scoreMin: number;
@@ -109,7 +113,7 @@ export interface Filters {
 
 export const DEFAULT_FILTERS: Filters = {
   zones: [], classes: [], minUnusedUnits: 0, minUnusedStories: 0, minLotArea: 0, maxImprLandRatio: null,
-  hideHistoric: false, hideRedev: false, hideNonconforming: false, includeCondos: false, includeUnscored: false,
+  hideHistoric: false, hideRedev: false, hideNonconforming: false, hideExempt: true, includeCondos: false, includeUnscored: false,
   scoreMin: 0, scoreMax: 100, search: "",
 };
 
@@ -129,6 +133,7 @@ export function matches(p: SiteProps, f: Filters): boolean {
   if (f.hideHistoric && p.in_historic_district) return false;
   if (f.hideRedev && (p.in_redev_area || p.has_redev_agreement)) return false;
   if (f.hideNonconforming && p.nonconforming) return false;
+  if (f.hideExempt && classGroup(p.prop_class) === "15") return false;
   // Numeric filters only constrain scored sites (others have no potential numbers).
   if (p.status === "scored") {
     if (f.minUnusedUnits > 0 && (p.unused_units ?? 0) < f.minUnusedUnits) return false;
@@ -160,11 +165,11 @@ export function toCsv(rows: SiteProps[], disclaimer: string): string {
     ["block", (p) => p.block], ["lot", (p) => p.lot], ["location", (p) => p.location],
     ["zone", (p) => p.zone_key], ["class", (p) => p.prop_class], ["status", (p) => p.status],
     ["score", (p) => p.score], ["existing_stories", (p) => p.existing_stories],
-    ["allowed_stories", (p) => p.allowed_stories], ["unused_stories", (p) => p.unused_stories],
+    ["allowed_stories", (p) => p.allowed_stories], ["allowed_stories_max", (p) => p.allowed_stories_max], ["unused_stories", (p) => p.unused_stories],
     ["existing_units", (p) => p.existing_units], ["allowed_units", (p) => p.allowed_units],
     ["unused_units", (p) => p.unused_units], ["lot_area_sqft", (p) => p.lot_area],
     ["land_value", (p) => p.land_value], ["improvement_value", (p) => p.impr_value],
-    ["year_built", (p) => p.year_built], ["flags", (p) => p.flags.map((f) => f.code).join(" ")],
+    ["year_built", (p) => p.year_built], ["warnings", (p) => p.flags.filter((f) => f.level === "warning").map((f) => f.code).join(" ")],
     ["score_reasons", (p) => (p.score_reasons ?? []).join("; ")],
     ["units_formula", (p) => p.units_formula], ["stories_formula", (p) => p.stories_formula],
   ];

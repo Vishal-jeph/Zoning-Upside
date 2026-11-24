@@ -39,7 +39,8 @@ export default async function ZonesPage() {
           <tbody>
             {zones.flatMap((z) => z.districts.map((d) => (
               <tr key={`${z.zone_key}-${d.name}`} className="border-t">
-                <td className="px-3 py-1.5 font-medium"><a href={`#${z.zone_key}`} className="hover:underline">{z.label}{d.name ? ` · ${d.name}` : ""}</a></td>
+                <td className="px-3 py-1.5 font-medium"><a href={`#${z.zone_key}`} className="hover:underline">{z.label}{d.name ? ` · ${d.name}` : ""}</a>
+                  {rules.source_conflicts?.[z.zone_key] && !d.name && <span title="Sources disagree; see below" className="ml-1 rounded bg-amber-100 px-1 text-[10px] text-amber-800">disputed</span>}</td>
                 {COLS.map((c) => {
                   const v = d.fields[c]?.value;
                   return <td key={c} className="px-3 py-1.5 text-right tabular-nums">{v == null || v === "" ? <span className="text-slate-400">—</span> : `${String(v).replace(/_/g, " ")}${unit(c) ? ` ${unit(c)}` : ""}`}</td>;
@@ -56,6 +57,9 @@ export default async function ZonesPage() {
       {zones.map((z) => (
         <section key={z.zone_key} id={z.zone_key} className="scroll-mt-4 space-y-3 rounded-md border p-4">
           <h2 className="text-lg font-semibold">{z.label} <span className="text-xs font-normal text-slate-500">approved {z.approved_at}</span></h2>
+          {(rules.source_conflicts?.[z.zone_key] ?? []).map((c) => (
+            <p key={c} className="rounded-md border border-amber-300 bg-amber-50 p-2 text-xs text-amber-900"><b>Sources disagree.</b> {c}</p>
+          ))}
           {z.districts.map((d) => (
             <div key={d.name ?? "main"} className="space-y-2">
               {d.name && <h3 className="font-medium">Sub-district: {d.name}</h3>}

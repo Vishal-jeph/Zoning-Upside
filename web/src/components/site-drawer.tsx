@@ -11,7 +11,7 @@ const PART_LABEL: Record<string, string> = {
   unused_units: "Unused units", unused_stories: "Unused floors", lot_area: "Lot size",
   land_value_share: "Land-driven value", old_building: "Older building", vacant_land: "Vacant land",
   historic: "Historic district", redev_agreement: "Redevelopment agreement", nonconforming: "Nonconforming",
-  irregular_lot: "Irregular lot", exempt: "Tax-exempt",
+  irregular_lot: "Irregular lot", exempt: "Tax-exempt", under_construction: "Possibly under construction",
 };
 
 export default function SiteDrawer({ site, rules, onClose }: {
@@ -55,7 +55,10 @@ export default function SiteDrawer({ site, rules, onClose }: {
                   <th className="text-right font-medium">Allowed</th><th className="text-right font-medium">Unused</th></tr>
               </thead>
               <tbody className="tabular-nums">
-                <Row label="Floors" a={fmtNum(site.existing_stories, 1)} b={fmtNum(site.allowed_stories, 1)} c={fmtNum(site.unused_stories, 1)} />
+                <Row label="Floors" a={fmtNum(site.existing_stories, 1)}
+                     b={site.allowed_stories_max != null && site.allowed_stories != null && site.allowed_stories_max > site.allowed_stories
+                       ? `${fmtNum(site.allowed_stories, 1)} (max ${fmtNum(site.allowed_stories_max, 1)})` : fmtNum(site.allowed_stories, 1)}
+                     c={fmtNum(site.unused_stories, 1)} />
                 <Row label="Units" a={fmtNum(site.existing_units)} b={fmtNum(site.allowed_units)} c={fmtNum(site.unused_units)} />
                 <Row label="Lot coverage" a="not in data"
                      b={maxCov != null ? `${maxCov}%${site.lot_area ? ` ≈ ${fmtNum(site.lot_area * maxCov / 100)} sq ft` : ""}` : "—"} c="" />
@@ -74,8 +77,10 @@ export default function SiteDrawer({ site, rules, onClose }: {
                   note="Not readable from the tax building description." />
             <Calc label="Lot area" formula={site.lot_area ? `${fmtNum(site.lot_area)} sq ft — from ${site.lot_area_basis} (“${site.lot_desc ?? ""}”)` : null} note="Unknown." />
             <p className="text-xs text-slate-500">
-              Assumptions: {String(rules.assumptions.binding_limit)} Floor-to-floor height is {String(rules.assumptions.default_floor_to_floor_ft)} ft
-              when the zone states no minimum. When a rule doesn&apos;t say how to round, units are rounded {String(rules.assumptions.default_rounding)}.
+              Assumptions: {String(rules.assumptions.binding_limit)} When a zone gives only a height limit, floors are estimated
+              at {String(rules.assumptions.typical_floor_to_floor_ft)} ft per floor (realistic), and the zone&apos;s minimum floor height
+              (or {String(rules.assumptions.default_floor_to_floor_ft)} ft) gives the theoretical maximum. When a rule doesn&apos;t say how to
+              round, units are rounded {String(rules.assumptions.default_rounding)}.
             </p>
           </Section>
         )}
@@ -94,10 +99,19 @@ export default function SiteDrawer({ site, rules, onClose }: {
           </Section>
         )}
 
-        {site.flags.length > 0 && (
+        {site.flags.some((fl) => fl.level === "warning") && (
           <Section title="Things to check">
             <ul className="space-y-1.5">
-              {site.flags.map((fl) => <li key={fl.code} className="rounded bg-slate-50 p-2 text-xs">{fl.text}</li>)}
+              {site.flags.filter((fl) => fl.level === "warning").map((fl) => (
+                <li key={fl.code + fl.text} className="rounded border-l-2 border-amber-400 bg-amber-50/60 p-2 text-xs">{fl.text}</li>))}
+            </ul>
+          </Section>
+        )}
+        {site.flags.some((fl) => fl.level === "info") && (
+          <Section title="Good to know">
+            <ul className="space-y-1.5">
+              {site.flags.filter((fl) => fl.level === "info").map((fl) => (
+                <li key={fl.code} className="rounded bg-slate-50 p-2 text-xs text-slate-600">{fl.text}</li>))}
             </ul>
           </Section>
         )}

@@ -127,8 +127,12 @@ How the deployed site is protected (`web/src/middleware.ts`):
   non-condo sites.
 
 **Potential.**
-- **Allowed floors:** the lower of the story limit and floor(height ÷ floor-to-floor). The zone's
-  floor-to-floor height is used, or 10 ft if the zone gives none.
+- **Allowed floors:**
+  - Zone states a story limit (R-1, R-CP, C-1, C-3): use it, checked against floor(height ÷ the
+    zone's minimum floor-to-floor).
+  - Zone states only a height (R-2, R-3, C-2): estimate floors at a realistic 11 ft per floor
+    (40 ft → 3). The legal-minimum result (40 ÷ 10 → 4) is shown as the theoretical maximum.
+  - "Already over the limit" is checked against the theoretical maximum.
 - **Allowed units:** lot area ÷ the zone's sq ft per unit, rounded as the rule says, or rounded
   down when it doesn't say.
 - **Unused:** allowed − existing.
@@ -153,10 +157,19 @@ How the deployed site is protected (`web/src/middleware.ts`):
   | Redevelopment agreement | −25 |
   | Historic district | −10 |
   | Nonconforming | −10 |
-  | Tax-exempt | −10 |
+  | Tax-exempt (also hidden by default) | −30 |
+  | Possibly under construction ("WIP" or "GUTTED" in the tax description) | −25 |
   | Irregular lot | −5 |
 
 - Each site lists its reasons, e.g. "Zone allows 20 units; currently 0".
+- Warnings shown as table badges: under construction, tax-exempt, redevelopment agreement,
+  historic, nonconforming, large site (10,000 sq ft or more, where density alone overstates
+  potential), disputed rule.
+- Flood zone and small lot apply to about half of Hoboken. They appear only in the detail panel,
+  as "Good to know".
+- Disputed rules: where the ordinance text quoted in the brief disagrees with an approved
+  Guide value, both are shown. The only case is C-1 height, 60 ft vs 52 ft; allowed floors are
+  5 either way.
 - A high score means upside, not a low price. The data holds assessed values only, not asking
   prices.
 
@@ -190,6 +203,8 @@ stored, displayed or exported:
   plan areas are shown but not scored.
 - Sub-districts (C-2 Court Street) can't be located on the map, so affected sites are flagged.
 - C-1 has no numeric density rule in the Guide, so its allowed units stay empty.
+- C-1 height is disputed: 60 ft in the Guide vs 52 ft in the ordinance text quoted in the brief.
+  The ordinance (ecode360) blocks automated access, so it has not been confirmed.
 - Existing lot coverage is not in the data.
 
 ## Roadmap

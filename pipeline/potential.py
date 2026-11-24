@@ -13,16 +13,25 @@ from __future__ import annotations
 
 import json
 import math
+import re
 from datetime import date
 
 import geopandas as gpd
 import pandas as pd
 
 from . import config
+from .rules_schema import SEEDS
 
 # ---------------------------------------------------------------- method settings (shown as assumptions)
-# Used to turn a height limit in feet into stories when the zone states no minimum floor-to-floor.
+# Legal minimum floor-to-floor when the zone states none (sets the theoretical maximum floors).
 DEFAULT_FLOOR_TO_FLOOR_FT = 10.0
+# Realistic floor-to-floor for new construction. When a zone gives only a height limit (no story
+# limit), floors are estimated with this; the legal-minimum result is shown as the theoretical maximum.
+TYPICAL_FLOOR_TO_FLOOR_FT = 11.0
+# Sites this large usually lose units to parking, setbacks, open space and site plan review.
+LARGE_SITE_SQFT = 10000
+# Tax building descriptions with these words suggest construction/renovation is already under way.
+UNDER_CONSTRUCTION_RE = r"\bWIP\b|GUTTED"
 # "Rounding not stated" → round down, so we never overstate what is allowed.
 DEFAULT_ROUNDING = "down"
 
@@ -38,7 +47,8 @@ SCORE_WEIGHTS = {
     "redev_agreement": -25,
     "nonconforming": -10,
     "irregular_lot": -5,
-    "exempt": -10,           # church / school / public owner: rarely for sale
+    "exempt": -30,           # church / school / public owner: rarely for sale
+    "under_construction": -25,  # "WIP" / "GUTTED" in the tax description: someone may already be building
 }
 UNUSED_UNITS_CAP = 10
 UNUSED_STORIES_CAP = 3
@@ -56,27 +66,38 @@ def _val(fields: dict, key: str):
 
 
 def allowed_stories(fields: dict) -> dict:
-    """Binding story limit from max stories and max height. A building must meet every stated limit,
-    so the lower one binds ("whichever is less" and "both apply" give the same answer)."""
+    """Floors allowed. Returns `value` (used for upside and score) and `max_value` (theoretical legal
+    maximum, used for the nonconforming check).
+
+    - Zone states a story limit: the zone itself says that many floors fit, so value = max_value =
+      min(story limit, floor(height ÷ legal minimum floor-to-floor)). A building must meet every stated
+      limit, so the lower one binds.
+    - Zone states only a height: max_value uses the legal minimum floor-to-floor; value uses a realistic
+      floor-to-floor (TYPICAL_FLOOR_TO_FLOOR_FT), because real buildings rarely build at the minimum."""
     max_st, max_ft = _val(fields, "max_stories"), _val(fields, "max_height_ft")
     ftf_rule = _val(fields, "min_floor_to_floor_ft")
     ftf = float(ftf_rule) if ftf_rule else DEFAULT_FLOOR_TO_FLOOR_FT
-    ftf_basis = "zone minimum floor-to-floor" if ftf_rule else "assumed typical floor-to-floor"
+    ftf_basis = "zone minimum floor-to-floor" if ftf_rule else "assumed minimum floor-to-floor"
     from_height = math.floor(float(max_ft) / ftf) if max_ft else None
 
     if max_st is None and from_height is None:
-        return {"value": None, "formula": None, "note": "No height or story limit in the approved rules."}
+        return {"value": None, "max_value": None, "formula": None,
+                "note": "No height or story limit in the approved rules."}
     if max_st is not None and from_height is not None:
         value = min(float(max_st), from_height)
         binding = "story limit" if float(max_st) <= from_height else "height limit"
         formula = (f"min({_n(max_st)} stories, floor({_n(max_ft)} ft ÷ {_n(ftf)} ft {ftf_basis}) = {from_height})"
                    f" = {_n(value)} ({binding} binds)")
-    elif max_st is not None:
-        value, formula = float(max_st), f"{_n(max_st)} stories (stated limit)"
-    else:
-        value = float(from_height)
-        formula = f"floor({_n(max_ft)} ft ÷ {_n(ftf)} ft {ftf_basis}) = {from_height}"
-    return {"value": value, "formula": formula, "note": None}
+        return {"value": value, "max_value": value, "formula": formula, "note": None}
+    if max_st is not None:
+        return {"value": float(max_st), "max_value": float(max_st),
+                "formula": f"{_n(max_st)} stories (stated limit)", "note": None}
+    # Height only: realistic estimate, with the legal-minimum result as the theoretical maximum.
+    realistic = min(from_height, math.floor(float(max_ft) / TYPICAL_FLOOR_TO_FLOOR_FT))
+    formula = (f"floor({_n(max_ft)} ft ÷ {_n(TYPICAL_FLOOR_TO_FLOOR_FT)} ft typical floor-to-floor) = {realistic}"
+               f" (realistic). Theoretical maximum: floor({_n(max_ft)} ft ÷ {_n(ftf)} ft {ftf_basis}) = "
+               f"{from_height}. The zone sets no story limit.")
+    return {"value": float(realistic), "max_value": float(from_height), "formula": formula, "note": None}
 
 
 def _round(x: float, how: str | None) -> int:
@@ -119,9 +140,16 @@ def _n(x) -> str:
 
 
 # ---------------------------------------------------------------- flags
-def site_flags(s: pd.Series, district: dict | None, zone: dict | None, nonconf: list[str]) -> list[dict]:
+# "info" flags are context that applies to most of Hoboken (flood, small lots); they are shown in the
+# detail panel but not as table badges. Everything else is a "warning".
+INFO_FLAGS = {"flood", "below_min_lot"}
+
+
+def site_flags(s: pd.Series, district: dict | None, zone: dict | None, nonconf: list[str],
+               conflicts: list[str] | None = None) -> list[dict]:
     out = []
-    add = lambda code, text: out.append({"code": code, "text": text})
+    add = lambda code, text: out.append({"code": code, "text": text,
+                                         "level": "info" if code in INFO_FLAGS else "warning"})
     if s.in_historic_district:
         add("historic", f"In a historic district{f' ({s.historic_code})' if s.historic_code else ''}: changes need "
                         "Historic Preservation Commission review, and extra height rules may apply.")
@@ -142,6 +170,12 @@ def site_flags(s: pd.Series, district: dict | None, zone: dict | None, nonconf: 
         add("irregular_lot", "Irregular lot shape: buildable area may be smaller than the lot area suggests.")
     if s.is_exempt:
         add("exempt", "Tax-exempt property (public, religious or nonprofit owner): rarely for sale.")
+    if under_construction(s.bldg_desc):
+        add("under_construction", f"The tax description (“{s.bldg_desc}”) suggests work in progress: the property "
+                                  "may already be under construction or renovation. Check building permits.")
+    if pd.notna(s.lot_area_best_sqft) and s.lot_area_best_sqft >= LARGE_SITE_SQFT and district:
+        add("large_site", f"Large site ({s.lot_area_best_sqft:,.0f} sq ft): parking, setbacks, open space and "
+                          "site plan review usually reduce the real unit count, so density alone overstates potential.")
     if s.area_mismatch:
         add("area_mismatch", f"Tax-record lot area and mapped lot area disagree (ratio {s.lot_area_ratio:.2f}); "
                              f"using {s.lot_area_basis}.")
@@ -159,6 +193,8 @@ def site_flags(s: pd.Series, district: dict | None, zone: dict | None, nonconf: 
         others = [d["name"] for d in zone["districts"] if d["name"]]
         add("subdistrict", f"This zone has a sub-district ({', '.join(others)}) with different rules; "
                            "check whether this lot is in it.")
+    for c in conflicts or []:
+        add("rule_conflict", c)
     if nonconf:
         add("nonconforming", "Existing building already exceeds the zone limit (" + "; ".join(nonconf) +
             "): not an expansion opportunity.")
@@ -175,7 +211,9 @@ def upside_score(r: dict) -> tuple[int, list[str], dict]:
         reasons.append(f"Zone allows {r['allowed_units']} units; currently {r['existing_units']}")
     if us is not None and us > 0:
         pts["unused_stories"] = W["unused_stories"] * min(us, UNUSED_STORIES_CAP) / UNUSED_STORIES_CAP
-        reasons.append(f"Zone allows {_n(r['allowed_stories'])} stories; currently {_n(r['existing_stories'])}")
+        mx = r.get("allowed_stories_max")
+        extra = f" ({_n(mx)} theoretical max)" if mx is not None and mx > r["allowed_stories"] else ""
+        reasons.append(f"Zone allows about {_n(r['allowed_stories'])} floors{extra}; currently {_n(r['existing_stories'])}")
     if r.get("lot_area"):
         pts["lot_area"] = W["lot_area"] * min(r["lot_area"], LOT_AREA_CAP_SQFT) / LOT_AREA_CAP_SQFT
         if r["lot_area"] >= LOT_AREA_CAP_SQFT:
@@ -195,7 +233,8 @@ def upside_score(r: dict) -> tuple[int, list[str], dict]:
                       ("redev_agreement", "Redevelopment agreement already on site"),
                       ("nonconforming", "Already larger than zoning allows"),
                       ("irregular_lot", "Irregular lot shape"),
-                      ("exempt", "Tax-exempt owner")]:
+                      ("exempt", "Tax-exempt owner (rarely for sale)"),
+                      ("under_construction", "Possibly under construction already (WIP in tax record)")]:
         if r.get(code):
             pts[code] = W[code]
             reasons.append(why)
@@ -208,8 +247,41 @@ def _num(v):
     return None if v is None or (isinstance(v, float) and math.isnan(v)) else v
 
 
+def under_construction(bldg_desc) -> bool:
+    return isinstance(bldg_desc, str) and re.search(UNDER_CONSTRUCTION_RE, bldg_desc.upper()) is not None
+
+
+def source_conflicts(approved: dict) -> dict[str, list[str]]:
+    """Where another source (the project brief's ordinance quotes in rules_schema.SEEDS) disagrees with an
+    approved number, describe both values and whether the floors result changes. Approved values are
+    still the ones used; this only surfaces the disagreement."""
+    out: dict[str, list[str]] = {}
+    for zk, seed in SEEDS.items():
+        zone = approved.get(zk)
+        if not zone:
+            continue
+        d = next((x for x in zone["districts"] if not x["name"]), zone["districts"][0])
+        f = d["fields"]
+        for key, other in seed["values"].items():
+            mine = _val(f, key)
+            if not isinstance(other, (int, float)) or mine is None or float(mine) == float(other):
+                continue
+            alt = {**f, key: {"value": other}}
+            a, b = allowed_stories(f)["value"], allowed_stories(alt)["value"]
+            effect = (f"allowed floors are {_n(a)} either way" if a == b else
+                      f"allowed floors would be {_n(b)} instead of {_n(a)}")
+            label = key.replace("_ft", "").replace("_", " ")
+            src = (f.get(key) or {}).get("source_type") or "approved source"
+            out.setdefault(zk, []).append(
+                f"Sources disagree on {label}: the {'Zoning Guide' if src == 'guide' else src} says {_n(mine)}, "
+                f"the ordinance text in the {seed['source']} says {_n(other)} (“{seed['text']}”). "
+                f"Using the approved value; {effect}. Confirm with the ordinance.")
+    return out
+
+
 def compute(sites: gpd.GeoDataFrame, approved: dict) -> pd.DataFrame:
     rows = []
+    conflicts = source_conflicts(approved)
     for _, s in sites.iterrows():
         zone = approved.get(s.zone_key)
         if s.is_condo_building:
@@ -238,13 +310,14 @@ def compute(sites: gpd.GeoDataFrame, approved: dict) -> pd.DataFrame:
         if district:
             st = allowed_stories(district["fields"])
             un = allowed_units(district["density_structured"], lot_area)
-            r.update(allowed_stories=st["value"], stories_formula=st["formula"], stories_note=st["note"],
+            r.update(allowed_stories=st["value"], allowed_stories_max=st["max_value"],
+                     stories_formula=st["formula"], stories_note=st["note"],
                      allowed_units=un["value"], units_formula=un["formula"], units_note=un["note"],
                      residential_permitted=_val(district["fields"], "residential_permitted"))
             if st["value"] is not None and ex_st is not None:
                 r["unused_stories"] = max(0.0, st["value"] - ex_st)
-                if ex_st > st["value"]:
-                    nonconf.append(f"{_n(ex_st)} stories vs {_n(st['value'])} allowed")
+                if ex_st > st["max_value"]:  # nonconforming only against the legal maximum
+                    nonconf.append(f"{_n(ex_st)} stories vs {_n(st['max_value'])} allowed")
             if un["value"] is not None and ex_u is not None:
                 r["unused_units"] = max(0, un["value"] - int(ex_u))
                 if ex_u > un["value"]:
@@ -253,13 +326,15 @@ def compute(sites: gpd.GeoDataFrame, approved: dict) -> pd.DataFrame:
 
         net = (_num(s.land_value) or 0) + (_num(s.impr_value) or 0)
         r["building_value_share"] = (_num(s.impr_value) or 0) / net if net > 0 else None
-        r["flags"] = site_flags(s, district, zone, nonconf) if status != "condo_building" else []
+        r["flags"] = (site_flags(s, district, zone, nonconf, conflicts.get(s.zone_key))
+                      if status != "condo_building" else [])
 
         if status == "scored":
             score, reasons, parts = upside_score({
                 **r, "year_built": _num(s.year_built), "vacant": bool(s.is_vacant_land),
                 "historic": bool(s.in_historic_district), "redev_agreement": bool(s.has_redev_agreement),
-                "irregular_lot": bool(s.lot_irregular), "exempt": bool(s.is_exempt)})
+                "irregular_lot": bool(s.lot_irregular), "exempt": bool(s.is_exempt),
+                "under_construction": under_construction(s.bldg_desc)})
             r.update(score=score, score_reasons=reasons, score_parts=parts)
         rows.append(r)
     return pd.DataFrame(rows)
@@ -302,6 +377,8 @@ def write_web(sites: gpd.GeoDataFrame, pot: pd.DataFrame, approved_file: dict) -
         "disclaimer": "Estimate based on public zoning text; verify with the Hoboken Zoning Office.",
         "assumptions": {
             "default_floor_to_floor_ft": DEFAULT_FLOOR_TO_FLOOR_FT,
+            "typical_floor_to_floor_ft": TYPICAL_FLOOR_TO_FLOOR_FT,
+            "large_site_sqft": LARGE_SITE_SQFT,
             "default_rounding": DEFAULT_ROUNDING,
             "binding_limit": "When both a story limit and a height limit are stated, the lower one is used.",
             "subdistricts": "Sites use the zone's main district; sub-districts are flagged, not assigned.",
@@ -309,6 +386,7 @@ def write_web(sites: gpd.GeoDataFrame, pot: pd.DataFrame, approved_file: dict) -
         "score_weights": SCORE_WEIGHTS,
         "score_caps": {"unused_units": UNUSED_UNITS_CAP, "unused_stories": UNUSED_STORIES_CAP,
                        "lot_area_sqft": LOT_AREA_CAP_SQFT, "old_building_before": OLD_BUILDING_YEAR},
+        "source_conflicts": source_conflicts(approved_file["zones"]),
         "zones": approved_file["zones"],
     }
     (WEB_DATA / "rules.json").write_text(json.dumps(rules, indent=1))

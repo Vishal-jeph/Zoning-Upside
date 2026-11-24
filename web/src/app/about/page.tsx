@@ -24,8 +24,8 @@ export default async function AboutPage() {
           <li><b>Sites.</b> Condo units are grouped into buildings (not scored), and properties repeated across several lots are merged.</li>
           <li><b>Zone and constraints.</b> Each site gets the zoning district covering most of it, plus flags for historic districts, flood zones, redevelopment areas and agreements (a layer must cover at least 10% of the lot).</li>
           <li><b>Rules.</b> An AI model read the City&apos;s Zoning Guide and returned each rule with a verbatim quote. Code checked every quote against the source, and a person approved each zone.</li>
-          <li><b>Allowed.</b> Floors = the lower of the story limit and height ÷ floor-to-floor ({String(rules.assumptions.default_floor_to_floor_ft)} ft unless the zone states one). Units = lot area ÷ the zone&apos;s square feet per unit, rounded as the rule says (down when not stated).</li>
-          <li><b>Score (0–100).</b> Unused units +{w.unused_units}, unused floors +{w.unused_stories}, lot size +{w.lot_area}, land-driven value +{w.land_value_share}, older building +{w.old_building}, vacant land +{w.vacant_land}; historic {w.historic}, redevelopment agreement {w.redev_agreement}, nonconforming {w.nonconforming}, irregular lot {w.irregular_lot}, tax-exempt {w.exempt}.</li>
+          <li><b>Allowed.</b> Floors = the zone&apos;s story limit, checked against height ÷ the zone&apos;s minimum floor height. Where a zone gives only a height (R-2, R-3, C-2), floors are estimated at a realistic {String(rules.assumptions.typical_floor_to_floor_ft)} ft per floor, and the minimum-height result is shown as the theoretical maximum. Units = lot area ÷ the zone&apos;s square feet per unit, rounded as the rule says (down when not stated).</li>
+          <li><b>Score (0–100).</b> Unused units +{w.unused_units}, unused floors +{w.unused_stories}, lot size +{w.lot_area}, land-driven value +{w.land_value_share}, older building +{w.old_building}, vacant land +{w.vacant_land}; historic {w.historic}, redevelopment agreement {w.redev_agreement}, nonconforming {w.nonconforming}, irregular lot {w.irregular_lot}, tax-exempt {w.exempt}, possibly under construction (“WIP” in the tax record) {w.under_construction}. Tax-exempt properties are hidden by default.</li>
         </ol>
       </S>
 
@@ -51,6 +51,8 @@ export default async function AboutPage() {
           <li>Year built is often a default value in the tax data (many records show 1901).</li>
           <li>Sub-districts (e.g. C-2 Court Street) can&apos;t be located on the map; affected sites are flagged.</li>
           <li>Lot coverage of the existing building is not in the data, so only the allowed coverage is shown.</li>
+          <li>On large sites (≥ {String(rules.assumptions.large_site_sqft)} sq ft) density alone overstates potential: parking, setbacks, open space and site plan review usually reduce the unit count.</li>
+          <li>Where sources disagree (e.g. C-1 height: Zoning Guide 60 ft vs. ordinance text 52 ft), the approved value is used and the disagreement is shown.</li>
         </ul>
       </S>
 

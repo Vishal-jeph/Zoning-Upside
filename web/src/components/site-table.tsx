@@ -9,11 +9,14 @@ import { Button } from "@/components/ui/button";
 import { fmtNum, scoreColor, type SiteProps } from "@/lib/sites";
 
 const FLAG_SHORT: Record<string, string> = {
-  historic: "Historic", flood: "Flood", redev_area: "Redev area", redev_agreement: "Agreement",
-  zoning_in_progress: "Rezoning", irregular_lot: "Irregular", exempt: "Exempt", below_min_lot: "Small lot",
-  nonconforming: "Nonconforming", area_mismatch: "Area?", zone_split: "Split zone", zone_mismatch: "Zone?",
-  subdistrict: "Sub-district",
+  under_construction: "WIP?", exempt: "Exempt", redev_agreement: "Agreement", historic: "Historic",
+  nonconforming: "Nonconforming", large_site: "Large site", redev_area: "Redev area", zoning_in_progress: "Rezoning",
+  rule_conflict: "Rule disputed", irregular_lot: "Irregular", area_mismatch: "Area?", zone_split: "Split zone",
+  zone_mismatch: "Zone?", subdistrict: "Sub-district",
 };
+
+// Flags that usually kill a deal get a red badge.
+const STRONG = new Set(["under_construction", "exempt", "redev_agreement", "nonconforming"]);
 
 const num = (k: keyof SiteProps, header: string, d = 0): ColumnDef<SiteProps> => ({
   accessorKey: k, header, sortUndefined: "last",
@@ -44,8 +47,8 @@ const columns: ColumnDef<SiteProps>[] = [
     id: "flags", header: "Flags", enableSorting: false,
     cell: (c) => (
       <div className="flex flex-wrap gap-1">
-        {c.row.original.flags.filter((f) => FLAG_SHORT[f.code]).slice(0, 4).map((f) => (
-          <span key={f.code} className="rounded bg-slate-100 px-1 text-[10px] text-slate-600">{FLAG_SHORT[f.code]}</span>
+        {c.row.original.flags.filter((f) => f.level === "warning" && FLAG_SHORT[f.code]).slice(0, 4).map((f) => (
+          <span key={f.code} className={`rounded px-1 text-[10px] ${STRONG.has(f.code) ? "bg-red-50 text-red-700" : "bg-slate-100 text-slate-600"}`}>{FLAG_SHORT[f.code]}</span>
         ))}
       </div>
     ),
