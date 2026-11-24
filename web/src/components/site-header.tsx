@@ -10,6 +10,7 @@ const NAV = [
 
 export default function SiteHeader() {
   const path = usePathname();
+  if (path === "/login") return null;
   return (
     <header className="flex h-12 shrink-0 items-center gap-6 border-b bg-white px-4">
       <Link href="/" className="flex items-baseline gap-2">
