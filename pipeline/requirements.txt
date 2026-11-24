@@ -13,7 +13,7 @@ python-dotenv>=1.0
 pytest>=8
 
 tabulate>=0.9
-overturemaps>=0.12
+overturemaps>=2.1
 
 # notebook walkthrough
 matplotlib>=3.8
