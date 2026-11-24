@@ -1,4 +1,1163 @@
 {
-  "updated_at": "2026-11-23T11:50:34.611Z",
-  "zones": {}
+  "updated_at": "2026-11-24T04:28:59.439Z",
+  "zones": {
+    "C-1": {
+      "zone_key": "C-1",
+      "label": "C-1",
+      "kind": "base_district",
+      "approved_by": "manual",
+      "approved_at": "2026-11-24",
+      "reviewer_notes": "",
+      "districts": [
+        {
+          "name": null,
+          "fields": {
+            "residential_permitted": {
+              "value": "conditional",
+              "basis": "extracted",
+              "quote": "The residential density permitted within this district is set in accordance with Use conditions in Section-196-G",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-1-district",
+              "source_type": "guide",
+              "extracted_value": "conditional"
+            },
+            "max_height_ft": {
+              "value": 60,
+              "basis": "extracted",
+              "quote": "maximum commercial building height of 60 feet above average adjacent grade , or 5 stories",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-1-district",
+              "source_type": "guide",
+              "extracted_value": 60
+            },
+            "max_stories": {
+              "value": 5,
+              "basis": "extracted",
+              "quote": "maximum commercial building height of 60 feet above average adjacent grade , or 5 stories",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-1-district",
+              "source_type": "guide",
+              "extracted_value": 5
+            },
+            "height_measured_from": {
+              "value": "grade",
+              "basis": "extracted",
+              "quote": "above average adjacent grade",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-1-district",
+              "source_type": "guide",
+              "extracted_value": "grade"
+            },
+            "height_limits_combine": {
+              "value": null,
+              "basis": "extracted",
+              "quote": null,
+              "source_url": null,
+              "source_type": null,
+              "extracted_value": null
+            },
+            "height_rule_text": {
+              "value": "maximum commercial building height of 60 feet above average adjacent grade , or 5 stories. A minimum floor-to-floor ceiling height of 10 feet is required.",
+              "basis": "extracted",
+              "quote": "maximum commercial building height of 60 feet above average adjacent grade , or 5 stories. A minimum floor-to-floor ceiling height of 10 feet is required.",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-1-district",
+              "source_type": "guide",
+              "extracted_value": "maximum commercial building height of 60 feet above average adjacent grade , or 5 stories. A minimum floor-to-floor ceiling height of 10 feet is required."
+            },
+            "min_lot_area_sqft": {
+              "value": 5000,
+              "basis": "extracted",
+              "quote": "Lot area (min.): As existing; 5,000 sf for new subdivision",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-1-district",
+              "source_type": "guide",
+              "extracted_value": 5000
+            },
+            "min_lot_width_ft": {
+              "value": 50,
+              "basis": "extracted",
+              "quote": "Lot width (min.): As existing; 50 ft. for new subdivision",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-1-district",
+              "source_type": "guide",
+              "extracted_value": 50
+            },
+            "min_lot_depth_ft": {
+              "value": 100,
+              "basis": "extracted",
+              "quote": "Lot depth (min.): As existing; 100 ft. for new subdivision",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-1-district",
+              "source_type": "guide",
+              "extracted_value": 100
+            },
+            "max_lot_coverage_pct": {
+              "value": 80,
+              "basis": "extracted",
+              "quote": "maximum lot coverage of 80% on the ground floor",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-1-district",
+              "source_type": "guide",
+              "extracted_value": 80
+            },
+            "max_far": {
+              "value": null,
+              "basis": "extracted",
+              "quote": null,
+              "source_url": null,
+              "source_type": null,
+              "extracted_value": null
+            },
+            "min_floor_to_floor_ft": {
+              "value": 10,
+              "basis": "extracted",
+              "quote": "A minimum floor-to-floor ceiling height of 10 feet is required",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-1-district",
+              "source_type": "guide",
+              "extracted_value": 10
+            },
+            "density_rule_text": {
+              "value": "The residential density permitted within this district is set in accordance with Use conditions in Section-196-G",
+              "basis": "extracted",
+              "quote": "The residential density permitted within this district is set in accordance with Use conditions in Section-196-G",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-1-district",
+              "source_type": "guide",
+              "extracted_value": "The residential density permitted within this district is set in accordance with Use conditions in Section-196-G"
+            }
+          },
+          "density_structured": {
+            "type": "none",
+            "site_area_per_unit_sqft": null,
+            "units_per_acre": null,
+            "max_units": null,
+            "rounding": "not_stated",
+            "basis": "extracted",
+            "quote": "The residential density permitted within this district is set in accordance with Use conditions in Section-196-G",
+            "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-1-district"
+          },
+          "special_conditions": [
+            {
+              "category": "historic",
+              "text": "Properties within the C-1 District that are also located within an Historic District Overlay are subject to additional or different bulk requirements.",
+              "quote": "Properties within the C-1 District that are also located within an Historic District Overlay (HDO) are subject to additional or different bulk requirements.",
+              "source_id": "S1",
+              "verified": true,
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-1-district"
+            }
+          ]
+        }
+      ]
+    },
+    "C-2": {
+      "zone_key": "C-2",
+      "label": "C-2",
+      "kind": "base_district",
+      "approved_by": "manual",
+      "approved_at": "2026-11-24",
+      "reviewer_notes": "",
+      "districts": [
+        {
+          "name": null,
+          "fields": {
+            "residential_permitted": {
+              "value": "yes",
+              "basis": "extracted",
+              "quote": "Ground-floor commercial with residential above is required for principal buildings.",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-2-district",
+              "source_type": "guide",
+              "extracted_value": "yes"
+            },
+            "max_height_ft": {
+              "value": 52,
+              "basis": "extracted",
+              "quote": "maximum principal building height of 52 feet above average adjacent grade is permitted",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-2-district",
+              "source_type": "guide",
+              "extracted_value": 52
+            },
+            "max_stories": {
+              "value": null,
+              "basis": "extracted",
+              "quote": null,
+              "source_url": null,
+              "source_type": null,
+              "extracted_value": null
+            },
+            "height_measured_from": {
+              "value": "grade",
+              "basis": "extracted",
+              "quote": "52 ft. above grade",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-2-district",
+              "source_type": "guide",
+              "extracted_value": "grade"
+            },
+            "height_limits_combine": {
+              "value": null,
+              "basis": "extracted",
+              "quote": null,
+              "source_url": null,
+              "source_type": null,
+              "extracted_value": null
+            },
+            "height_rule_text": {
+              "value": "maximum principal building height of 52 feet above average adjacent grade is permitted",
+              "basis": "extracted",
+              "quote": "maximum principal building height of 52 feet above average adjacent grade is permitted",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-2-district",
+              "source_type": "guide",
+              "extracted_value": "maximum principal building height of 52 feet above average adjacent grade is permitted"
+            },
+            "min_lot_area_sqft": {
+              "value": 2000,
+              "basis": "extracted",
+              "quote": "Lot area (min.): As existing; 2,000 sf for new subdivision",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-2-district",
+              "source_type": "guide",
+              "extracted_value": 2000
+            },
+            "min_lot_width_ft": {
+              "value": 20,
+              "basis": "extracted",
+              "quote": "Lot width (min.): As existing; 20 ft. for new subdivision",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-2-district",
+              "source_type": "guide",
+              "extracted_value": 20
+            },
+            "min_lot_depth_ft": {
+              "value": 100,
+              "basis": "extracted",
+              "quote": "Lot depth (min.): As existing; 100 ft. for new subdivision",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-2-district",
+              "source_type": "guide",
+              "extracted_value": 100
+            },
+            "max_lot_coverage_pct": {
+              "value": 60,
+              "basis": "extracted",
+              "quote": "Maximum lot coverage permitted for principal buildings fronting Washington Street is 60%",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-2-district",
+              "source_type": "guide",
+              "extracted_value": 60
+            },
+            "max_far": {
+              "value": null,
+              "basis": "extracted",
+              "quote": null,
+              "source_url": null,
+              "source_type": null,
+              "extracted_value": null
+            },
+            "min_floor_to_floor_ft": {
+              "value": null,
+              "basis": "extracted",
+              "quote": null,
+              "source_url": null,
+              "source_type": null,
+              "extracted_value": null
+            },
+            "density_rule_text": {
+              "value": "maximum residential density permitted within this district is calculated by dividing the lot area by 330",
+              "basis": "extracted",
+              "quote": "The maximum residential density permitted within this district is calculated by dividing the lot area by 330.",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-2-district",
+              "source_type": "guide",
+              "extracted_value": "maximum residential density permitted within this district is calculated by dividing the lot area by 330"
+            }
+          },
+          "density_structured": {
+            "type": "site_area_per_unit",
+            "site_area_per_unit_sqft": 330,
+            "units_per_acre": null,
+            "max_units": null,
+            "rounding": "not_stated",
+            "basis": "extracted",
+            "quote": "The maximum residential density permitted within this district is calculated by dividing the lot area by 330.",
+            "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-2-district"
+          },
+          "special_conditions": [
+            {
+              "category": "other",
+              "text": "Rear yard setback of 40% of the lot is required; no front or side yard setbacks required.",
+              "quote": "A minimum rear setback of 40% of the lot is required, while no side yard setback is required. Additionally, no front yard setback is required, except where front yard prevailing setbacks apply.",
+              "source_id": "S1",
+              "verified": true,
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-2-district"
+            }
+          ]
+        },
+        {
+          "name": "Court Street",
+          "fields": {
+            "residential_permitted": {
+              "value": "yes",
+              "basis": "extracted",
+              "quote": "Ground-floor commercial with residential above is required for principal buildings.",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-2-district",
+              "source_type": "guide",
+              "extracted_value": "yes"
+            },
+            "max_height_ft": {
+              "value": 52,
+              "basis": "extracted",
+              "quote": "maximum principal building height of 52 feet above average adjacent grade is permitted",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-2-district",
+              "source_type": "guide",
+              "extracted_value": 52
+            },
+            "max_stories": {
+              "value": null,
+              "basis": "extracted",
+              "quote": null,
+              "source_url": null,
+              "source_type": null,
+              "extracted_value": null
+            },
+            "height_measured_from": {
+              "value": "grade",
+              "basis": "extracted",
+              "quote": "52 ft. above grade; Accessory: 30 ft. above grade",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-2-district",
+              "source_type": "guide",
+              "extracted_value": "grade"
+            },
+            "height_limits_combine": {
+              "value": null,
+              "basis": "extracted",
+              "quote": null,
+              "source_url": null,
+              "source_type": null,
+              "extracted_value": null
+            },
+            "height_rule_text": {
+              "value": "maximum principal building height of 52 feet above average adjacent grade is permitted; accessory building height of 30 feet above grade is permitted",
+              "basis": "extracted",
+              "quote": "The maximum height permitted for maximum principal building height of 52 feet above average adjacent grade is permitted, while an accessory building height of 30 feet above grade is permitted.",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-2-district",
+              "source_type": "guide",
+              "extracted_value": "maximum principal building height of 52 feet above average adjacent grade is permitted; accessory building height of 30 feet above grade is permitted"
+            },
+            "min_lot_area_sqft": {
+              "value": 2000,
+              "basis": "extracted",
+              "quote": "Lot area (min.): As existing; 2,000 sf for new subdivision",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-2-district",
+              "source_type": "guide",
+              "extracted_value": 2000
+            },
+            "min_lot_width_ft": {
+              "value": 20,
+              "basis": "extracted",
+              "quote": "Lot width (min.): As existing; 20 ft. for new subdivision",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-2-district",
+              "source_type": "guide",
+              "extracted_value": 20
+            },
+            "min_lot_depth_ft": {
+              "value": 100,
+              "basis": "extracted",
+              "quote": "Lot depth (min.): As existing; 100 ft. for new subdivision",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-2-district",
+              "source_type": "guide",
+              "extracted_value": 100
+            },
+            "max_lot_coverage_pct": {
+              "value": 60,
+              "basis": "extracted",
+              "quote": "Maximum lot coverage for principal buildings fronting Washington Street is 60%",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-2-district",
+              "source_type": "guide",
+              "extracted_value": 60
+            },
+            "max_far": {
+              "value": null,
+              "basis": "extracted",
+              "quote": null,
+              "source_url": null,
+              "source_type": null,
+              "extracted_value": null
+            },
+            "min_floor_to_floor_ft": {
+              "value": null,
+              "basis": "extracted",
+              "quote": null,
+              "source_url": null,
+              "source_type": null,
+              "extracted_value": null
+            },
+            "density_rule_text": {
+              "value": "maximum residential density is calculated by dividing the lot area by 330 and adding one unit",
+              "basis": "extracted",
+              "quote": "For property abutting Court Street, the maximum residential density is calculated by dividing the lot area by 330 and adding one (1) unit.",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-2-district",
+              "source_type": "guide",
+              "extracted_value": "maximum residential density is calculated by dividing the lot area by 330 and adding one unit"
+            }
+          },
+          "density_structured": {
+            "type": "formula",
+            "site_area_per_unit_sqft": null,
+            "units_per_acre": null,
+            "max_units": null,
+            "rounding": "not_stated",
+            "basis": "extracted",
+            "quote": "maximum residential density is calculated by dividing the lot area by 330 and adding one unit",
+            "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-2-district"
+          },
+          "special_conditions": [
+            {
+              "category": "other",
+              "text": "Accessory building fronting Court Street may cover up to 20% of the lot; rear yard setback of 40% required; no front or side yard setbacks.",
+              "quote": "Maximum lot coverage for accessory buildings fronting Court Street is 20%. Rear yard: 40%. Front yard: 0 ft. or prevailing.",
+              "source_id": "S1",
+              "verified": false,
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-2-district"
+            }
+          ]
+        }
+      ]
+    },
+    "C-3": {
+      "zone_key": "C-3",
+      "label": "C-3",
+      "kind": "base_district",
+      "approved_by": "manual",
+      "approved_at": "2026-11-24",
+      "reviewer_notes": "",
+      "districts": [
+        {
+          "name": null,
+          "fields": {
+            "residential_permitted": {
+              "value": "yes",
+              "basis": "extracted",
+              "quote": "The purpose of the C-3 Neighborhood Business District is to provide a range of shopping, goods and convenience services that cater largely to residents in the surrounding neighborhood.",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-3-district",
+              "source_type": "guide",
+              "extracted_value": "yes"
+            },
+            "max_height_ft": {
+              "value": 52,
+              "basis": "extracted",
+              "quote": "maximum building height of four (4) residential floors over one (1) grade-level commercial floor that can not exceed 52 feet above grade",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-3-district",
+              "source_type": "guide",
+              "extracted_value": 52
+            },
+            "max_stories": {
+              "value": 5,
+              "basis": "extracted",
+              "quote": "four (4) residential floors over one (1) grade-level commercial floor",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-3-district",
+              "source_type": "guide",
+              "extracted_value": 5
+            },
+            "height_measured_from": {
+              "value": "grade",
+              "basis": "extracted",
+              "quote": "not exceed 52 feet above grade",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-3-district",
+              "source_type": "guide",
+              "extracted_value": "grade"
+            },
+            "height_limits_combine": {
+              "value": null,
+              "basis": "extracted",
+              "quote": null,
+              "source_url": null,
+              "source_type": null,
+              "extracted_value": null
+            },
+            "height_rule_text": {
+              "value": "The C-3 Neighborhood Business District permits a maximum building height of four (4) residential floors over one (1) grade-level commercial floor that can not exceed 52 feet above grade. For residential floors, a minimum floor-to-floor height of 10 feet is required. For commercial floors, a minimum floor-to-floor height of 12 feet is required.",
+              "basis": "extracted",
+              "quote": "The C-3 Neighborhood Business District permits a maximum building height of four (4) residential floors over one (1) grade-level commercial floor that can not exceed 52 feet above grade. For residential floors, a minimum floor-to-floor height of 10 feet is required. For commercial floors, a minimum floor-to-floor height of 12 feet is required.",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-3-district",
+              "source_type": "guide",
+              "extracted_value": "The C-3 Neighborhood Business District permits a maximum building height of four (4) residential floors over one (1) grade-level commercial floor that can not exceed 52 feet above grade. For residential floors, a minimum floor-to-floor height of 10 feet is required. For commercial floors, a minimum floor-to-floor height of 12 feet is required."
+            },
+            "min_lot_area_sqft": {
+              "value": 2000,
+              "basis": "extracted",
+              "quote": "Lot area (min.): As existing; 2,000 sf",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-3-district",
+              "source_type": "guide",
+              "extracted_value": 2000
+            },
+            "min_lot_width_ft": {
+              "value": 20,
+              "basis": "extracted",
+              "quote": "Lot width (min.): As existing; 20 ft.",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-3-district",
+              "source_type": "guide",
+              "extracted_value": 20
+            },
+            "min_lot_depth_ft": {
+              "value": 100,
+              "basis": "extracted",
+              "quote": "Lot depth (min.): As existing; 100 ft.",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-3-district",
+              "source_type": "guide",
+              "extracted_value": 100
+            },
+            "max_lot_coverage_pct": {
+              "value": 60,
+              "basis": "extracted",
+              "quote": "Maximum lot coverage permitted is 60%",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-3-district",
+              "source_type": "guide",
+              "extracted_value": 60
+            },
+            "max_far": {
+              "value": null,
+              "basis": "extracted",
+              "quote": null,
+              "source_url": null,
+              "source_type": null,
+              "extracted_value": null
+            },
+            "min_floor_to_floor_ft": {
+              "value": 10,
+              "basis": "extracted",
+              "quote": "For residential floors, a minimum floor-to-floor height of 10 feet is required",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-3-district",
+              "source_type": "guide",
+              "extracted_value": 10
+            },
+            "density_rule_text": {
+              "value": "The maximum residential density permitted within this district is calculated by dividing the lot area by 500.",
+              "basis": "extracted",
+              "quote": "The maximum residential density permitted within this district is calculated by dividing the lot area by 500.",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-3-district",
+              "source_type": "guide",
+              "extracted_value": "The maximum residential density permitted within this district is calculated by dividing the lot area by 500."
+            }
+          },
+          "density_structured": {
+            "type": "site_area_per_unit",
+            "site_area_per_unit_sqft": 500,
+            "units_per_acre": null,
+            "max_units": null,
+            "rounding": "not_stated",
+            "basis": "extracted",
+            "quote": "The maximum residential density permitted within this district is calculated by dividing the lot area by 500.",
+            "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-3-district"
+          },
+          "special_conditions": [
+            {
+              "category": "historic",
+              "text": "Properties within the C-3 District that are also located within an Historic District Overlay are subject to additional or different bulk requirements.",
+              "quote": "Properties within the C-3 District that are also located within an Historic District Overlay (HDO) are subject to additional or different bulk requirements.",
+              "source_id": "S1",
+              "verified": true,
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/c-3-district"
+            }
+          ]
+        }
+      ]
+    },
+    "R-1": {
+      "zone_key": "R-1",
+      "label": "R-1",
+      "kind": "base_district",
+      "approved_by": "manual",
+      "approved_at": "2026-11-24",
+      "reviewer_notes": "",
+      "districts": [
+        {
+          "name": null,
+          "fields": {
+            "residential_permitted": {
+              "value": "yes",
+              "basis": "extracted",
+              "quote": "R-1 District permits a maximum residential building height...",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-1-district",
+              "source_type": "guide",
+              "extracted_value": "yes"
+            },
+            "max_height_ft": {
+              "value": 40,
+              "basis": "extracted",
+              "quote": "maximum residential building height of 40 feet above Design Flood Elevation (DFE)",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-1-district",
+              "source_type": "guide",
+              "extracted_value": 40
+            },
+            "max_stories": {
+              "value": 3,
+              "basis": "extracted",
+              "quote": "or three stories",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-1-district",
+              "source_type": "guide",
+              "extracted_value": 3
+            },
+            "height_measured_from": {
+              "value": "design_flood_elevation",
+              "basis": "extracted",
+              "quote": "40 feet above Design Flood Elevation (DFE)",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-1-district",
+              "source_type": "guide",
+              "extracted_value": "design_flood_elevation"
+            },
+            "height_limits_combine": {
+              "value": null,
+              "basis": "extracted",
+              "quote": null,
+              "source_url": null,
+              "source_type": null,
+              "extracted_value": null
+            },
+            "height_rule_text": {
+              "value": "maximum residential building height of 40 feet above Design Flood Elevation (DFE), or 3 stories. A minimum floor-to-floor ceiling height of 10 feet is required.",
+              "basis": "extracted",
+              "quote": "maximum residential building height of 40 feet above Design Flood Elevation (DFE), or 3 stories. A minimum floor-to-floor ceiling height of 10 feet is required.",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-1-district",
+              "source_type": "guide",
+              "extracted_value": "maximum residential building height of 40 feet above Design Flood Elevation (DFE), or 3 stories. A minimum floor-to-floor ceiling height of 10 feet is required."
+            },
+            "min_lot_area_sqft": {
+              "value": 2000,
+              "basis": "extracted",
+              "quote": "Lot area (min.): 2,000 sf",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-1-district",
+              "source_type": "guide",
+              "extracted_value": 2000
+            },
+            "min_lot_width_ft": {
+              "value": 100,
+              "basis": "extracted",
+              "quote": "Lot width (min.): 100 ft.",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-1-district",
+              "source_type": "guide",
+              "extracted_value": 100
+            },
+            "min_lot_depth_ft": {
+              "value": 100,
+              "basis": "extracted",
+              "quote": "Lot depth (min.): 100 ft.",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-1-district",
+              "source_type": "guide",
+              "extracted_value": 100
+            },
+            "max_lot_coverage_pct": {
+              "value": 60,
+              "basis": "extracted",
+              "quote": "Lot coverage (max.): 60%",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-1-district",
+              "source_type": "guide",
+              "extracted_value": 60
+            },
+            "max_far": {
+              "value": null,
+              "basis": "extracted",
+              "quote": null,
+              "source_url": null,
+              "source_type": null,
+              "extracted_value": null
+            },
+            "min_floor_to_floor_ft": {
+              "value": 10,
+              "basis": "extracted",
+              "quote": "Min. floor-to-floor Height: 10 ft.",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-1-district",
+              "source_type": "guide",
+              "extracted_value": 10
+            },
+            "density_rule_text": {
+              "value": "The number of residential units (i.e., density) permitted is determined by dividing the site area by 660 and rounding to the closest whole number.",
+              "basis": "extracted",
+              "quote": "The number of residential units (i.e., density) permitted is determined by dividing the site area by 660 and rounding to the closest whole number.",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-1-district",
+              "source_type": "guide",
+              "extracted_value": "The number of residential units (i.e., density) permitted is determined by dividing the site area by 660 and rounding to the closest whole number."
+            }
+          },
+          "density_structured": {
+            "type": "site_area_per_unit",
+            "site_area_per_unit_sqft": 660,
+            "units_per_acre": null,
+            "max_units": null,
+            "rounding": "nearest",
+            "basis": "extracted",
+            "quote": "The number of residential units ... determined by dividing the site area by 660 and rounding to the closest whole number.",
+            "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-1-district"
+          },
+          "special_conditions": [
+            {
+              "category": "step_back",
+              "text": "The building must have a 30‑foot, or 30% of lot, rear setback at minimum.",
+              "quote": "The building must have a 30-foot, or 30% of lot, rear setback at minimum.",
+              "source_id": "S1",
+              "verified": true,
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-1-district"
+            },
+            {
+              "category": "historic",
+              "text": "Properties within the R-1 District that are also located within an Historic District Overlay (HDO) are subject to additional or different bulk requirements.",
+              "quote": "Properties within the R-1 District that are also located within an Historic District Overlay (HDO) are subject to additional or different bulk requirements.",
+              "source_id": "S1",
+              "verified": true,
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-1-district"
+            }
+          ]
+        }
+      ]
+    },
+    "R-2": {
+      "zone_key": "R-2",
+      "label": "R-2",
+      "kind": "base_district",
+      "approved_by": "manual",
+      "approved_at": "2026-11-24",
+      "reviewer_notes": "",
+      "districts": [
+        {
+          "name": null,
+          "fields": {
+            "residential_permitted": {
+              "value": "yes",
+              "basis": "extracted",
+              "quote": "The purpose of this district is: ... to otherwise reinforce the residential characteristics of this district by restricting uses and structures not compatible with district objectives.",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-2-district",
+              "source_type": "guide",
+              "extracted_value": "yes"
+            },
+            "max_height_ft": {
+              "value": 40,
+              "basis": "extracted",
+              "quote": "Building Height: 40 ft. above DFE",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-2-district",
+              "source_type": "guide",
+              "extracted_value": 40
+            },
+            "max_stories": {
+              "value": null,
+              "basis": "extracted",
+              "quote": null,
+              "source_url": null,
+              "source_type": null,
+              "extracted_value": null
+            },
+            "height_measured_from": {
+              "value": "design_flood_elevation",
+              "basis": "extracted",
+              "quote": "above Design Flood Elevation (DFE)",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-2-district",
+              "source_type": "guide",
+              "extracted_value": "design_flood_elevation"
+            },
+            "height_limits_combine": {
+              "value": null,
+              "basis": "extracted",
+              "quote": null,
+              "source_url": null,
+              "source_type": null,
+              "extracted_value": null
+            },
+            "height_rule_text": {
+              "value": "The R-2 District permits a maximum residential building height of 40 feet above Design Flood Elevation (DFE).",
+              "basis": "extracted",
+              "quote": "The R-2 District permits a maximum residential building height of 40 feet above Design Flood Elevation (DFE).",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-2-district",
+              "source_type": "guide",
+              "extracted_value": "The R-2 District permits a maximum residential building height of 40 feet above Design Flood Elevation (DFE)."
+            },
+            "min_lot_area_sqft": {
+              "value": 2000,
+              "basis": "extracted",
+              "quote": "Lot area (min.): 2,000 sf",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-2-district",
+              "source_type": "guide",
+              "extracted_value": 2000
+            },
+            "min_lot_width_ft": {
+              "value": 20,
+              "basis": "extracted",
+              "quote": "Lot width (min.): 20 ft.",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-2-district",
+              "source_type": "guide",
+              "extracted_value": 20
+            },
+            "min_lot_depth_ft": {
+              "value": 100,
+              "basis": "extracted",
+              "quote": "Lot depth (min.): 100 ft.",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-2-district",
+              "source_type": "guide",
+              "extracted_value": 100
+            },
+            "max_lot_coverage_pct": {
+              "value": 60,
+              "basis": "extracted",
+              "quote": "Lot coverage (max.): 60%",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-2-district",
+              "source_type": "guide",
+              "extracted_value": 60
+            },
+            "max_far": {
+              "value": null,
+              "basis": "extracted",
+              "quote": null,
+              "source_url": null,
+              "source_type": null,
+              "extracted_value": null
+            },
+            "min_floor_to_floor_ft": {
+              "value": 10,
+              "basis": "extracted",
+              "quote": "Min. floor-to-floor Height: 10 ft.",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-2-district",
+              "source_type": "guide",
+              "extracted_value": 10
+            },
+            "density_rule_text": {
+              "value": "The number of residential units (i.e., density) allowed is determined by dividing the site area by 660 and rounding to the closest whole number.",
+              "basis": "extracted",
+              "quote": "The number of residential units (i.e., density) allowed is determined by dividing the site area by 660 and rounding to the closest whole number.",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-2-district",
+              "source_type": "guide",
+              "extracted_value": "The number of residential units (i.e., density) allowed is determined by dividing the site area by 660 and rounding to the closest whole number."
+            }
+          },
+          "density_structured": {
+            "type": "site_area_per_unit",
+            "site_area_per_unit_sqft": 660,
+            "units_per_acre": null,
+            "max_units": null,
+            "rounding": "nearest",
+            "basis": "extracted",
+            "quote": "Density (min.): 660 sf per dwelling unit",
+            "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-2-district"
+          },
+          "special_conditions": [
+            {
+              "category": "step_back",
+              "text": "Rear yard setback is the lesser of 30 ft or 30 % of lot depth.",
+              "quote": "Rear yard: 30 ft. or 30% of lot depth, whichever is less.",
+              "source_id": "S1",
+              "verified": true,
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-2-district"
+            },
+            {
+              "category": "step_back",
+              "text": "Front yard may be 0 ft or match adjacent side setbacks, but not exceed 10 ft.",
+              "quote": "Front yard: 0 ft. or match the setback on the adjoining lots on either side except that no front yard setback shall exceed 10 feet.",
+              "source_id": "S1",
+              "verified": true,
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-2-district"
+            },
+            {
+              "category": "step_back",
+              "text": "Side yard setback may be 0 ft or 5 ft.",
+              "quote": "Side yard: 0 ft. or 5 ft.",
+              "source_id": "S1",
+              "verified": true,
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-2-district"
+            }
+          ]
+        }
+      ]
+    },
+    "R-3": {
+      "zone_key": "R-3",
+      "label": "R-3",
+      "kind": "base_district",
+      "approved_by": "manual",
+      "approved_at": "2026-11-24",
+      "reviewer_notes": "",
+      "districts": [
+        {
+          "name": null,
+          "fields": {
+            "residential_permitted": {
+              "value": "yes",
+              "basis": "extracted",
+              "quote": "The R-3 District permits a maximum residential building height of 40 feet above Design Flood Elevation (DFE).",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-3-district",
+              "source_type": "guide",
+              "extracted_value": "yes"
+            },
+            "max_height_ft": {
+              "value": 40,
+              "basis": "extracted",
+              "quote": "maximum residential building height of 40 feet above Design Flood Elevation (DFE)",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-3-district",
+              "source_type": "guide",
+              "extracted_value": 40
+            },
+            "max_stories": {
+              "value": null,
+              "basis": "extracted",
+              "quote": null,
+              "source_url": null,
+              "source_type": null,
+              "extracted_value": null
+            },
+            "height_measured_from": {
+              "value": "design_flood_elevation",
+              "basis": "extracted",
+              "quote": "maximum residential building height of 40 feet above Design Flood Elevation (DFE)",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-3-district",
+              "source_type": "guide",
+              "extracted_value": "design_flood_elevation"
+            },
+            "height_limits_combine": {
+              "value": null,
+              "basis": "extracted",
+              "quote": null,
+              "source_url": null,
+              "source_type": null,
+              "extracted_value": null
+            },
+            "height_rule_text": {
+              "value": "maximum residential building height of 40 feet above Design Flood Elevation (DFE)",
+              "basis": "extracted",
+              "quote": "maximum residential building height of 40 feet above Design Flood Elevation (DFE)",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-3-district",
+              "source_type": "guide",
+              "extracted_value": "maximum residential building height of 40 feet above Design Flood Elevation (DFE)"
+            },
+            "min_lot_area_sqft": {
+              "value": 2500,
+              "basis": "extracted",
+              "quote": "Lot area (min.): 2,500 sf",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-3-district",
+              "source_type": "guide",
+              "extracted_value": 2500
+            },
+            "min_lot_width_ft": {
+              "value": 25,
+              "basis": "extracted",
+              "quote": "Lot width (min.): 25 ft.",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-3-district",
+              "source_type": "guide",
+              "extracted_value": 25
+            },
+            "min_lot_depth_ft": {
+              "value": 100,
+              "basis": "extracted",
+              "quote": "Lot depth (min.): 100 ft.",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-3-district",
+              "source_type": "guide",
+              "extracted_value": 100
+            },
+            "max_lot_coverage_pct": {
+              "value": 60,
+              "basis": "extracted",
+              "quote": "Lot coverage (max.): 60% (principal building)",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-3-district",
+              "source_type": "guide",
+              "extracted_value": 60
+            },
+            "max_far": {
+              "value": null,
+              "basis": "extracted",
+              "quote": null,
+              "source_url": null,
+              "source_type": null,
+              "extracted_value": null
+            },
+            "min_floor_to_floor_ft": {
+              "value": 10,
+              "basis": "extracted",
+              "quote": "Min. floor-to-floor Height: 10 ft.",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-3-district",
+              "source_type": "guide",
+              "extracted_value": 10
+            },
+            "density_rule_text": {
+              "value": "The number of residential units (i.e., density) allowed is determined by dividing the site area by 660 and rounding to the closest whole number.",
+              "basis": "extracted",
+              "quote": "The number of residential units (i.e., density) allowed is determined by dividing the site area by 660 and rounding to the closest whole number.",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-3-district",
+              "source_type": "guide",
+              "extracted_value": "The number of residential units (i.e., density) allowed is determined by dividing the site area by 660 and rounding to the closest whole number."
+            }
+          },
+          "density_structured": {
+            "type": "site_area_per_unit",
+            "site_area_per_unit_sqft": 660,
+            "units_per_acre": null,
+            "max_units": null,
+            "rounding": "nearest",
+            "basis": "extracted",
+            "quote": "The number of residential units (i.e., density) allowed is determined by dividing the site area by 660 and rounding to the closest whole number.",
+            "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-3-district"
+          },
+          "special_conditions": [
+            {
+              "category": "step_back",
+              "text": "Rear yard setback must be 30 ft. or 30% of lot depth, whichever is less.",
+              "quote": "Rear yard: 30 ft. or 30% of lot depth, whichever is less.",
+              "source_id": "S1",
+              "verified": true,
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-3-district"
+            },
+            {
+              "category": "neighbor_height",
+              "text": "Front yard setback must match the setback on adjoining lots on either side, not exceeding 10 ft.",
+              "quote": "Front yard: 0 ft. or match the setback on the adjoining lots on either side except that no front yard setback shall exceed 10 feet.",
+              "source_id": "S1",
+              "verified": true,
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-3-district"
+            }
+          ]
+        }
+      ]
+    },
+    "R-CP": {
+      "zone_key": "R-CP",
+      "label": "R-CP",
+      "kind": "base_district",
+      "approved_by": "manual",
+      "approved_at": "2026-11-24",
+      "reviewer_notes": "",
+      "districts": [
+        {
+          "name": null,
+          "fields": {
+            "residential_permitted": {
+              "value": "yes",
+              "basis": "extracted",
+              "quote": "The R-CP district permits a maximum residential building height of 40 feet...",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-cp-district",
+              "source_type": "guide",
+              "extracted_value": "yes"
+            },
+            "max_height_ft": {
+              "value": 40,
+              "basis": "extracted",
+              "quote": "The R-CP district permits a maximum residential building height of 40 feet above average adjacent grade",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-cp-district",
+              "source_type": "guide",
+              "extracted_value": 40
+            },
+            "max_stories": {
+              "value": 3.5,
+              "basis": "extracted",
+              "quote": "or 3.5 stories",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-cp-district",
+              "source_type": "guide",
+              "extracted_value": 3.5
+            },
+            "height_measured_from": {
+              "value": "grade",
+              "basis": "extracted",
+              "quote": "40 feet above average adjacent grade",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-cp-district",
+              "source_type": "guide",
+              "extracted_value": "grade"
+            },
+            "height_limits_combine": {
+              "value": null,
+              "basis": "extracted",
+              "quote": null,
+              "source_url": null,
+              "source_type": null,
+              "extracted_value": null
+            },
+            "height_rule_text": {
+              "value": "The R-CP district permits a maximum residential building height of 40 feet above average adjacent grade, or 3.5 stories. The bottom-most story would then be partially above and partially below grade; the portion below grade would not be counted towards the maximum height.",
+              "basis": "extracted",
+              "quote": "The R-CP district permits a maximum residential building height of 40 feet above average adjacent grade , or 3.5 stories.",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-cp-district",
+              "source_type": "guide",
+              "extracted_value": "The R-CP district permits a maximum residential building height of 40 feet above average adjacent grade, or 3.5 stories. The bottom-most story would then be partially above and partially below grade; the portion below grade would not be counted towards the maximum height."
+            },
+            "min_lot_area_sqft": {
+              "value": 3000,
+              "basis": "extracted",
+              "quote": "Lot area (min.): 3,000 sf",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-cp-district",
+              "source_type": "guide",
+              "extracted_value": 3000
+            },
+            "min_lot_width_ft": {
+              "value": 30,
+              "basis": "extracted",
+              "quote": "Lot width (min.): 30 ft.",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-cp-district",
+              "source_type": "guide",
+              "extracted_value": 30
+            },
+            "min_lot_depth_ft": {
+              "value": 100,
+              "basis": "extracted",
+              "quote": "Lot depth (min.): 100 ft.",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-cp-district",
+              "source_type": "guide",
+              "extracted_value": 100
+            },
+            "max_lot_coverage_pct": {
+              "value": 50,
+              "basis": "extracted",
+              "quote": "Lot coverage (max.): 50%",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-cp-district",
+              "source_type": "guide",
+              "extracted_value": 50
+            },
+            "max_far": {
+              "value": null,
+              "basis": "extracted",
+              "quote": null,
+              "source_url": null,
+              "source_type": null,
+              "extracted_value": null
+            },
+            "min_floor_to_floor_ft": {
+              "value": null,
+              "basis": "extracted",
+              "quote": null,
+              "source_url": null,
+              "source_type": null,
+              "extracted_value": null
+            },
+            "density_rule_text": {
+              "value": "The number of residential units (i.e., density) allowed is determined by dividing the site area by 2,000 and rounding to the closest whole number and calculated to the thousandth place.",
+              "basis": "extracted",
+              "quote": "The number of residential units (i.e., density) allowed is determined by dividing the site area by 2,000 and rounding to the closest whole number and calculated to the thousandth place.",
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-cp-district",
+              "source_type": "guide",
+              "extracted_value": "The number of residential units (i.e., density) allowed is determined by dividing the site area by 2,000 and rounding to the closest whole number and calculated to the thousandth place."
+            }
+          },
+          "density_structured": {
+            "type": "site_area_per_unit",
+            "site_area_per_unit_sqft": 2000,
+            "units_per_acre": null,
+            "max_units": null,
+            "rounding": "nearest",
+            "basis": "extracted",
+            "quote": "Density (max.): Lot area divided by 2,000, rounded to the nearest whole number calculated to the thousandth place",
+            "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-cp-district"
+          },
+          "special_conditions": [
+            {
+              "category": "step_back",
+              "text": "Rear yard must be at least 30% of lot area or 30 ft.",
+              "quote": "A minimum rear setback of 30-foot, or 30% of lot is required.",
+              "source_id": "S1",
+              "verified": true,
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-cp-district"
+            },
+            {
+              "category": "step_back",
+              "text": "At least one side yard must be 5 ft.",
+              "quote": "On at least one side, a minimum 5-foot side yard setback is required.",
+              "source_id": "S1",
+              "verified": true,
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-cp-district"
+            },
+            {
+              "category": "step_back",
+              "text": "Front yard follows prevailing setbacks, not to exceed 10 ft.",
+              "quote": "No front yard setback is required, except where front yard prevailing setbacks apply. In such cases, the front yard prevailing setback can not exceed 10 feet.",
+              "source_id": "S1",
+              "verified": true,
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-cp-district"
+            },
+            {
+              "category": "historic",
+              "text": "Properties also in a Historic District Overlay may have additional bulk requirements.",
+              "quote": "Properties within the R-CP District that are also located within an Historic District Overlay (HDO) are subject to additional or different bulk requirements.",
+              "source_id": "S1",
+              "verified": true,
+              "source_url": "https://city-of-hoboken-zoning-guide-cityofhoboken.hub.arcgis.com/pages/r-cp-district"
+            }
+          ]
+        }
+      ]
+    }
+  }
 }
