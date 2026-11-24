@@ -1,9 +1,14 @@
 "use client";
 // MapLibre map: sites coloured by upside score, toggleable zoning / constraint overlays, click to select.
 import { useEffect, useRef, useState } from "react";
-import maplibregl, { type ExpressionSpecification, type GeoJSONSource } from "maplibre-gl";
+import * as maplibregl from "maplibre-gl";
+import type { ExpressionSpecification, GeoJSONSource } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { SCORE_STOPS, type SiteFeature } from "@/lib/sites";
+
+// MapLibre v6 runs its tile parsing in a worker loaded from a separate file; it is copied to
+// public/ by the predev/prebuild scripts (see package.json).
+maplibregl.setWorkerUrl("/maplibre-gl-worker.mjs");
 
 // Free, keyless vector basemap (OpenFreeMap, OpenStreetMap data).
 const BASEMAP = "https://tiles.openfreemap.org/styles/positron";

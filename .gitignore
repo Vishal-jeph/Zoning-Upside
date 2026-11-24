@@ -13,3 +13,4 @@ node_modules/
 # Manually saved ordinance pages / plan PDFs are large third-party documents: keep local.
 data/sources/ordinance/
 data/sources/plans/
+web/public/maplibre-gl-worker.mjs
